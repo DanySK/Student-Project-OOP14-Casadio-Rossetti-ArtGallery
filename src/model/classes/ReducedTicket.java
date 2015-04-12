@@ -10,19 +10,18 @@ public class ReducedTicket extends Ticket {
 	private final double percentage;
 	
 	/**
+	 * Constructor. 
 	 * @param name
 	 *            the exposition name
 	 * @param number
 	 *            the ticket number
 	 * @param price
-	 *            the ticket price            
-	 * @param sold
-	 *            if the ticket is already sold  
+	 *            the ticket price              
 	 * @param percentage
 	 *            the discount percentage                      
 	 */
-	public ReducedTicket(final String name, final int number, final double price, final boolean sold, final double percentage) {
-		super(name, number, price, sold);
+	public ReducedTicket(final String name, final int number, final double price, final double percentage) {
+		super(name, number, price);
 		this.percentage = percentage;
 	}
 	
