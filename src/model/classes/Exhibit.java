@@ -2,6 +2,7 @@ package model.classes;
 
 import java.util.*;
 
+import model.interfaces.IArtwork;
 import model.interfaces.IExhibit;
 
 /**
@@ -16,7 +17,7 @@ public class Exhibit implements IExhibit {
 	private final String curator;
 	private final Calendar beginning;
 	private final Calendar end;
-	private final List<Artwork> artworks;
+	private final List<IArtwork> artworks;
 	private final double costExhibit;
 	
 	/**
@@ -36,12 +37,12 @@ public class Exhibit implements IExhibit {
 	 */
 	public Exhibit(final String title, final String curator, 
 			final Calendar beginning, final Calendar end, 
-			final List<Artwork> artworks, final double costExhibit) {
+			final double costExhibit) {
 		this.titleExhibit = title;
 		this.curator = curator;
 		this.beginning = beginning;
 		this.end = end;
-		this.artworks = artworks;
+		this.artworks = new ArrayList<>();
 		this.costExhibit = costExhibit;
 	}
 	
@@ -66,7 +67,12 @@ public class Exhibit implements IExhibit {
 	}
 	
 	@Override
-	public List<Artwork> getArtworks() {
+	public void addArtwork(final IArtwork artwork){
+		this.artworks.add(artwork);
+	}
+	
+	@Override
+	public List<IArtwork> getArtworks() {
 		return this.artworks;
 	}
 	
@@ -82,11 +88,11 @@ public class Exhibit implements IExhibit {
 	
 	@Override
 	public String toString() {
-		return "Exhibit[title=" + this.titleExhibit + ", curators=" + 
-				this.curator + ", beginning=" + this.beginning.getTime() +
-				", end=" + this.end.getTime() + ", number of pieces=" +
-				this.getNumPieces() + ", artworks=" + this.artworks + 
-				", cost exhibit=" + this.costExhibit + "]";
+		return "Exhibit[title=" + this.titleExhibit + ", curators=" 
+				+ this.curator + ", beginning=" + this.beginning.getTime() 
+				+ ", end=" + this.end.getTime() + ", number of pieces=" 
+				+ this.getNumPieces() + ", artworks=" + this.artworks 
+				+ ", cost exhibit=" + this.costExhibit + "]";
 	}
 
 }
