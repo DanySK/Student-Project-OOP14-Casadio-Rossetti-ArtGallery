@@ -2,8 +2,6 @@ package model.interfaces;
 
 import java.util.*;
 
-import model.classes.Artwork;
-
 /**
  * Interface for the exhibit of the art gallery.
  * @author Elisa Casadio
@@ -41,11 +39,18 @@ public interface IExhibit {
 	Calendar getEnd();
 	
 	/**
+	 * Adds the artwork to the list of exhibit's artworks.
+	 * 
+	 * @param the artwork.
+	 */
+	void addArtwork(final IArtwork artwork);
+	
+	/**
 	 * Return the list of artworks of this exhibit.
 	 * 
 	 * @return the list of artworks.
 	 */
-	List<Artwork> getArtworks();
+	List<IArtwork> getArtworks();
 	
 	/**
 	 * Return the number of pieces of the artworks of this exhibit.
