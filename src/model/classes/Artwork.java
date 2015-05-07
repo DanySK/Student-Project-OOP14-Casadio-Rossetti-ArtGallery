@@ -1,5 +1,7 @@
 package model.classes;
 
+import java.io.Serializable;
+
 import model.interfaces.IArtwork;
 
 /**
@@ -8,12 +10,12 @@ import model.interfaces.IArtwork;
  *
  */
 
-public class Artwork implements IArtwork {
+public class Artwork implements IArtwork, Serializable {
 
+	private static final long serialVersionUID = -152183137102222118L;
 	private final String title;
 	private final String author;
 	private final int year;
-	
 	private final String artisticDiscipline;
 	private final String technique;
 	private final double height;
@@ -23,38 +25,38 @@ public class Artwork implements IArtwork {
 	
 	/**
 	 * Constructor.
-	 * @param title
+	 * @param newTitle
 	 * 			the artwork's title.
-	 * @param author
+	 * @param newAuthor
 	 * 			the author's name of this artwork.
-	 * @param year
+	 * @param newYear
 	 * 			the year of the artwork.
-	 * @param artisticDiscipline
+	 * @param newArtDiscipline
 	 * 			the type of artistic discipline of the artwork.
-	 * @param technique
+	 * @param newTechnique
 	 * 			the painting technique or material of the artwork.
-	 * @param height
+	 * @param newHeight
 	 * 			the height of artwork.
-	 * @param width
+	 * @param newWidth
 	 * 			the width of artwork.
-	 * @param depth
+	 * @param newDepth
 	 * 			the depth of artwork.
-	 * @param description
+	 * @param newDescription
 	 * 			the description of artwork.
 	 */
-	public Artwork(final String title, final String author, final int year,
-			final String artisticDiscipline, final String technique,
-			final double height, final double width,
-			final double depth, final String description) {
-		this.title = title;
-		this.author = author;
-		this.year = year;
-		this.artisticDiscipline = artisticDiscipline;
-		this.technique = technique;
-		this.height = height;
-		this.width = width;
-		this.depth = depth;
-		this.description = description;
+	public Artwork(final String newTitle, final String newAuthor, final int newYear,
+			final String newArtDiscipline, final String newTechnique,
+			final double newHeight, final double newWidth,
+			final double newDepth, final String newDescription) {
+		this.title = newTitle;
+		this.author = newAuthor;
+		this.year = newYear;
+		this.artisticDiscipline = newArtDiscipline;
+		this.technique = newTechnique;
+		this.height = newHeight;
+		this.width = newWidth;
+		this.depth = newDepth;
+		this.description = newDescription;
 	}
 	
 	@Override
@@ -82,6 +84,7 @@ public class Artwork implements IArtwork {
 		return this.technique;
 	}
 	
+	@Override
 	public double getHeight() {
 		return this.height;
 	}
@@ -103,11 +106,12 @@ public class Artwork implements IArtwork {
 	
 	@Override
 	public String toString() {
-		return "Artwork[title=" + this.title + ", author=" + this.author +
-				", year=" + this.year + ", artistic discipline=" 
-				+ this.artisticDiscipline + ", technique=" + this.technique +
-				", height=" + this.height + ", width=" + this.width +
-				", depth=" + this.depth + ", description=" + this.description + "]";
+		return "Artwork[title=" + this.title + ", author=" + this.author 
+				+ ", year=" + this.year + ", artistic discipline=" 
+				+ this.artisticDiscipline + ", technique=" + this.technique
+				+ ", height=" + this.height + ", width=" + this.width 
+				+ ", depth=" + this.depth + ", description=" 
+				+ this.description + "]";
 	}
 
 }
