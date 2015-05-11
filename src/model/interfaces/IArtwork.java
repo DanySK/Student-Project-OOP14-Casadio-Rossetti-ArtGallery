@@ -1,12 +1,19 @@
 package model.interfaces;
 
 /**
- * Interface for the artwork of a exhibit.
+ * Interface for the artwork that is or has been in the art gallery.
  * @author Elisa Casadio
  *
  */
 
 public interface IArtwork {
+	
+	/**
+	 * Return the code of the artwork.
+	 * 
+	 * @return the code of the artwork.
+	 */
+	Long getCode();
 	
 	/**
 	 * Return the title of the artwork.
