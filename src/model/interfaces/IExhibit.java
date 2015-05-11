@@ -1,6 +1,7 @@
 package model.interfaces;
 
-import java.util.*;
+import java.util.Calendar;
+import java.util.List;
 
 /**
  * Interface for the exhibit of the art gallery.
@@ -18,9 +19,9 @@ public interface IExhibit {
 	String getTitleExhibit();
 	
 	/**
-	 * Return the name of the curator or curators of this exhibit.
+	 * Return the name of the curator of this exhibit.
 	 * 
-	 * @return the name of the curators.
+	 * @return the name of the curator.
 	 */
 	String getCurator();
 	
@@ -39,18 +40,19 @@ public interface IExhibit {
 	Calendar getEnd();
 	
 	/**
-	 * Adds the artwork to the list of exhibit's artworks.
+	 * Adds the code of the artwork to the list of the exhibit's artworks.
 	 * 
-	 * @param the artwork.
+	 * @param code
+	 * 			the code of the artwork.
 	 */
-	void addArtwork(final IArtwork artwork);
+	void addArtwork(final Long code);
 	
 	/**
-	 * Return the list of artworks of this exhibit.
+	 * Return the list of the codes of the artwork of this exhibit.
 	 * 
-	 * @return the list of artworks.
+	 * @return the list of the codes of the artwork.
 	 */
-	List<IArtwork> getArtworks();
+	List<Long> getArtworks();
 	
 	/**
 	 * Return the number of pieces of the artworks of this exhibit.
@@ -65,5 +67,12 @@ public interface IExhibit {
 	 * @return the cost of this exhibit.
 	 */
 	double getCostExhibit();
+	
+	/**
+	 * Return the cost of the ticket for this exhibit.
+	 * 
+	 * @return the cost of the ticket.
+	 */
+	double getCostTicket();
 
 }
