@@ -13,6 +13,8 @@ import model.interfaces.IArtwork;
 public class Artwork implements IArtwork, Serializable {
 
 	private static final long serialVersionUID = -152183137102222118L;
+	
+	private final Long code;
 	private final String title;
 	private final String author;
 	private final int year;
@@ -25,6 +27,8 @@ public class Artwork implements IArtwork, Serializable {
 	
 	/**
 	 * Constructor.
+	 * @param newCode
+	 * 			the artwork's code.
 	 * @param newTitle
 	 * 			the artwork's title.
 	 * @param newAuthor
@@ -44,10 +48,12 @@ public class Artwork implements IArtwork, Serializable {
 	 * @param newDescription
 	 * 			the description of artwork.
 	 */
-	public Artwork(final String newTitle, final String newAuthor, final int newYear,
+	public Artwork(final Long newCode, final String newTitle,
+			final String newAuthor, final int newYear,
 			final String newArtDiscipline, final String newTechnique,
 			final double newHeight, final double newWidth,
 			final double newDepth, final String newDescription) {
+		this.code = newCode;
 		this.title = newTitle;
 		this.author = newAuthor;
 		this.year = newYear;
@@ -57,6 +63,11 @@ public class Artwork implements IArtwork, Serializable {
 		this.width = newWidth;
 		this.depth = newDepth;
 		this.description = newDescription;
+	}
+	
+	@Override
+	public Long getCode() {
+		return this.code;
 	}
 	
 	@Override
@@ -106,12 +117,12 @@ public class Artwork implements IArtwork, Serializable {
 	
 	@Override
 	public String toString() {
-		return "Artwork[title=" + this.title + ", author=" + this.author 
-				+ ", year=" + this.year + ", artistic discipline=" 
-				+ this.artisticDiscipline + ", technique=" + this.technique
-				+ ", height=" + this.height + ", width=" + this.width 
-				+ ", depth=" + this.depth + ", description=" 
-				+ this.description + "]";
+		return "Artwork[code=" + this.code + ", title=" + this.title 
+				+ ", author=" + this.author + ", year=" + this.year 
+				+ ", artistic discipline=" + this.artisticDiscipline 
+				+ ", technique=" + this.technique + ", height=" + this.height 
+				+ ", width=" + this.width + ", depth=" + this.depth 
+				+ ", description=" + this.description + "]";
 	}
 
 }
