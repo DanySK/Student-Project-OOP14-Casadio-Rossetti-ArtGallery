@@ -1,8 +1,10 @@
 package view.classes;
 
-import java.awt.*;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 
-import javax.swing.*;
+import javax.swing.JComponent;
+import javax.swing.JPanel;
 
 /**
  * This class adds the graphical components to a panel with GridBagLayout.
@@ -10,16 +12,33 @@ import javax.swing.*;
  *
  */
 
-public class AdderComponentPanel {
+public final class AdderComponentPanel {
+	
+	private static AdderComponentPanel adder;
 	
 	/**
 	 * Empty constructor.
 	 */
-	public AdderComponentPanel() {
+	private AdderComponentPanel() {
 	}
 	
 	/**
-	 * Adds the component to the panel.
+	 * Returns the object associated with the current Java application.
+	 * Most of the methods of class AdderComponentPanel are instance
+	 * methods and must be invoked with respect to the current object.
+	 * 
+	 * @return the object associated with the current Java application.
+	 */
+	public static AdderComponentPanel getAdder() {
+		if (adder == null) {
+			adder = new AdderComponentPanel();
+		}
+		return adder;
+	}
+	
+	/**
+	 * Adds the component to the panel with a specific layout. Each integer
+	 * value passed is a parameter to place the component within the panel.
 	 * 
 	 * @param p
 	 * 			the panel where must be added the JComponent.
@@ -41,9 +60,9 @@ public class AdderComponentPanel {
 	 * 			the layout that must be applied the association between the
 	 * 			component and the GridBagConstraints.
 	 */
-	protected void addComponent(final JPanel p, final JComponent c, final int x,
+	public void addComponent(final JPanel p, final JComponent c, final int x,
 			final int y, final int gwidth, final int gheight, final int align,
-			final int ins, final GridBagLayout layout){
+			final int ins, final GridBagLayout layout) {
 		
 		final GridBagConstraints gbc = new GridBagConstraints();
 		gbc.gridx = x;
