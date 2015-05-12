@@ -13,6 +13,7 @@ import model.interfaces.IArtwork;
 public class Artwork implements IArtwork, Serializable {
 
 	private static final long serialVersionUID = -152183137102222118L;
+	private static final int PRIME = 31;
 	
 	private final Long code;
 	private final String title;
@@ -113,6 +114,102 @@ public class Artwork implements IArtwork, Serializable {
 	@Override
 	public String getDescription() {
 		return this.description;
+	}
+	
+	@Override
+	public int hashCode() {
+		int result = 1;
+		result = PRIME * result
+				+ ((artisticDiscipline == null) ? 0 : artisticDiscipline
+						.hashCode());
+		result = PRIME * result + ((author == null) ? 0 : author.hashCode());
+		result = PRIME * result + ((code == null) ? 0 : code.hashCode());
+		long temp;
+		temp = Double.doubleToLongBits(depth);
+		result = PRIME * result + (int) (temp ^ (temp >>> 32));
+		result = PRIME * result
+				+ ((description == null) ? 0 : description.hashCode());
+		temp = Double.doubleToLongBits(height);
+		result = PRIME * result + (int) (temp ^ (temp >>> 32));
+		result = PRIME * result
+				+ ((technique == null) ? 0 : technique.hashCode());
+		result = PRIME * result + ((title == null) ? 0 : title.hashCode());
+		temp = Double.doubleToLongBits(width);
+		result = PRIME * result + (int) (temp ^ (temp >>> 32));
+		result = PRIME * result + year;
+		return result;
+	}
+
+	@Override
+	public boolean equals(final Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (obj == null) {
+			return false;
+		}
+		if (getClass() != obj.getClass()) {
+			return false;
+		}
+		final Artwork other = (Artwork) obj;
+		if (artisticDiscipline == null) {
+			if (other.artisticDiscipline != null) {
+				return false;
+			}
+		} else if (!artisticDiscipline.equals(other.artisticDiscipline)) {
+			return false;
+		}
+		if (author == null) {
+			if (other.author != null) {
+				return false;
+			}
+		} else if (!author.equals(other.author)) {
+			return false;
+		}
+		if (code == null) {
+			if (other.code != null) {
+				return false;
+			}
+		} else if (!code.equals(other.code)) {
+			return false;
+		}
+		if (Double.doubleToLongBits(depth) != Double
+				.doubleToLongBits(other.depth)) {
+			return false;
+		}
+		if (description == null) {
+			if (other.description != null) {
+				return false;
+			}
+		} else if (!description.equals(other.description)) {
+			return false;
+		}
+		if (Double.doubleToLongBits(height) != Double
+				.doubleToLongBits(other.height)) {
+			return false;
+		}
+		if (technique == null) {
+			if (other.technique != null) {
+				return false;
+			}
+		} else if (!technique.equals(other.technique)) {
+			return false;
+		}
+		if (title == null) {
+			if (other.title != null) {
+				return false;
+			}
+		} else if (!title.equals(other.title)) {
+			return false;
+		}
+		if (Double.doubleToLongBits(width) != Double
+				.doubleToLongBits(other.width)) {
+			return false;
+		}
+		if (year != other.year) {
+			return false;
+		}
+		return true;
 	}
 	
 	@Override
