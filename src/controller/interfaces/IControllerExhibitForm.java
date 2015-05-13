@@ -13,7 +13,9 @@ import view.classes.ExhibitForm;
 public interface IControllerExhibitForm {
 
 	/**
-	 * Checks the accuracy of the form fields.
+	 * Checks the accuracy of the form fields and saves the informations about 
+	 * the exhibit in the model and in the view. Show an error message if the 
+	 * fields are incorrect.
 	 * 
 	 * @param title
 	 * 			the exhibit's title.
