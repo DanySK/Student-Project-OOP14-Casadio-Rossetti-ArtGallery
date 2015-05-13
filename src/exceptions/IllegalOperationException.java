@@ -4,7 +4,8 @@ package exceptions;
  * Thrown when the user wants to add an artwork that is already added to an 
  * exhibit or when the user wants to delete an artwork that is already used by 
  * an exhibit or when the user wants to add or to delete an artwork from an 
- * exhibit that has already finished.
+ * exhibit that has already finished or when the user wants to modify or to 
+ * delete an exhibit that has already started.
  * @author Elisa Casadio
  *
  */
