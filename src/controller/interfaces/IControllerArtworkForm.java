@@ -11,7 +11,8 @@ import view.classes.ArtworkForm;
 public interface IControllerArtworkForm {
 
 	/**
-	 * Checks the accuracy of the form fields and show an error message if the 
+	 * Checks the accuracy of the form fields and saves the information of the 
+	 * artwork in the model and in the view. Show an error message if the 
 	 * fields are incorrect.
 	 * 
 	 * @param code
