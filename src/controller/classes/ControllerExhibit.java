@@ -26,8 +26,10 @@ import exceptions.IllegalOperationException;
 public class ControllerExhibit implements IControllerExhibit {
 
 	private static final String ERROR = "ERRORE";
-	private static final String WRONG_COMMAND = "Impossibile modificare/"
-			+ "cancellare la mostra selezionata, perché già iniziata.";
+	private static final String WRONG_EDIT_COMMAND = "Impossibile modificare"
+			+ " la mostra selezionata, perché già iniziata.";
+	private static final String WRONG_DELETE_COMMAND = "Impossibile cancellare"
+			+ " la mostra selezionata, perché già iniziata.";
 	private static final String DELETE = "ELIMINA";
 	private static final String CONFIRM_DELETE = "Sei sicuro di voler eliminare"
 			+ " questa esposizione?";
@@ -68,7 +70,7 @@ public class ControllerExhibit implements IControllerExhibit {
 		try {
 			if (this.model.getExhibit().get(index).getBeginning()
 					.before(Calendar.getInstance())) {
-				throw new IllegalOperationException(WRONG_COMMAND);
+				throw new IllegalOperationException(WRONG_EDIT_COMMAND);
 			} else {
 				final ExhibitForm exhibit = new ExhibitForm(frame);
 				exhibit.setForm(index, this.model);
@@ -87,7 +89,7 @@ public class ControllerExhibit implements IControllerExhibit {
 		try {
 			if (this.model.getExhibit().get(index).getBeginning()
 					.before(Calendar.getInstance())) {
-				throw new IllegalOperationException(WRONG_COMMAND);
+				throw new IllegalOperationException(WRONG_DELETE_COMMAND);
 			} else {
 				final int n = JOptionPane.showConfirmDialog(frame, 
 						CONFIRM_DELETE, DELETE, JOptionPane.YES_NO_OPTION);
