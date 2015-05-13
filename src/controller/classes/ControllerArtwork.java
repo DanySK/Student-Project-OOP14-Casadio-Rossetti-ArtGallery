@@ -55,7 +55,7 @@ public class ControllerArtwork implements IControllerArtwork {
 	}
 	
 	@Override
-	public void commandAdd(final JFrame frame) {
+	public void commandNew(final JFrame frame) {
 		ArtworkForm artwork = new ArtworkForm(frame, 1L);
 		if (this.model.getArtwork().size() != 0) {
 			artwork = new ArtworkForm(frame, this.model.getArtwork().get(
