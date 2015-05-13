@@ -134,7 +134,7 @@ public class ExhibitView extends JFrame implements IExhibitView {
 		this.addButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(final ActionEvent e) {
-				controller.commandAdd(ExhibitView.this);
+				controller.commandNew(ExhibitView.this);
 			}
 		});
 		this.editButton.addActionListener(new ActionListener() {

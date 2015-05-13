@@ -127,7 +127,7 @@ public class ArtworkView extends JFrame implements IArtworkView {
 		this.addArt.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(final ActionEvent e) {
-				controller.commandAdd(ArtworkView.this);
+				controller.commandNew(ArtworkView.this);
 			}
 		});
 		this.editArt.addActionListener(new ActionListener() {
