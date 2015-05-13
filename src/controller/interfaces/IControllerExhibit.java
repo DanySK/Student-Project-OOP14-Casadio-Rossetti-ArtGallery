@@ -11,15 +11,19 @@ import javax.swing.JFrame;
 public interface IControllerExhibit {
 
 	/**
-	 * Adds a new exhibit.
+	 * Show a new empty form to add a new exhibit to the archive of the 
+	 * exhibits of the art gallery.
 	 * 
 	 * @param frame
 	 * 			the frame of the view.
 	 */
-	void commandAdd(final JFrame frame);
+	void commandNew(final JFrame frame);
 	
 	/**
-	 * Changes the selected exhibit.
+	 * Show a form setted with the informations of the selected exhibit in the 
+	 * table to permit the modification of the informations. Show an error 
+	 * message if the user wants to edit the exhibit's information when the 
+	 * exhibit has already started.
 	 * 
 	 * @param index
 	 * 			the position of the exhibit in the list.
@@ -30,7 +34,9 @@ public interface IControllerExhibit {
 	void commandEdit(final int index, final JFrame frame);
 	
 	/**
-	 * Deletes the selected exhibit.
+	 * Deletes the selected exhibit from the view and from the model by asking 
+	 * the user for confirmation. Show an error message if the user wants to 
+	 * delete the exhibit when the exhibit has already started.
 	 * 
 	 * @param index
 	 * 			the position of the exhibit in the list.
@@ -40,7 +46,8 @@ public interface IControllerExhibit {
 	void commandDelete(final int index, final JFrame frame);
 	
 	/**
-	 * Displays the artwork of the selected exhibit.
+	 * Open a new view where is shown the archive of the artworks and the 
+	 * artworks exposed in the selected exhibit.
 	 * 
 	 * @param index
 	 * 			the position of the exhibit in the list.
@@ -50,7 +57,8 @@ public interface IControllerExhibit {
 	void commandArtwork(final int index, final JFrame frame);
 	
 	/**
-	 * Closes the frame and saves the model in to a file.
+	 * Closes the frame and saves the model in to a file. Show an error message
+	 * if the writing fails.
 	 * 
 	 * @param frame
 	 * 			the frame of the view.
