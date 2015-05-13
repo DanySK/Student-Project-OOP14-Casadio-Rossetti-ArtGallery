@@ -58,7 +58,7 @@ public class ControllerExhibit implements IControllerExhibit {
 	}
 	
 	@Override
-	public void commandAdd(final JFrame frame) {
+	public void commandNew(final JFrame frame) {
 		final ExhibitForm exhibit = new ExhibitForm(frame);
 	    exhibit.reinit();
 	    exhibit.setVisible(true);
@@ -90,13 +90,13 @@ public class ControllerExhibit implements IControllerExhibit {
 			if (this.model.getExhibit().get(index).getBeginning()
 					.before(Calendar.getInstance())) {
 				throw new IllegalOperationException(WRONG_DELETE_COMMAND);
-			} else {
-				final int n = JOptionPane.showConfirmDialog(frame, 
-						CONFIRM_DELETE, DELETE, JOptionPane.YES_NO_OPTION);
-				if (n == JOptionPane.YES_OPTION) {
-					this.view.clearData(index);
-					this.model.getExhibit().remove(index);
-				}
+			}
+			
+			final int n = JOptionPane.showConfirmDialog(frame, 
+					CONFIRM_DELETE, DELETE, JOptionPane.YES_NO_OPTION);
+			if (n == JOptionPane.YES_OPTION) {
+				this.view.clearData(index);
+				this.model.getExhibit().remove(index);
 			}
 		} catch (IllegalOperationException e) {
 			JOptionPane.showMessageDialog(frame, e.getMessage(), ERROR,
