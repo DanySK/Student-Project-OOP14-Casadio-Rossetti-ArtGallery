@@ -7,9 +7,8 @@ import java.io.ObjectOutputStream;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
-import model.classes.Artwork;
-import model.classes.Exhibit;
 import model.classes.ArtGallery;
+import model.classes.Exhibit;
 import view.classes.ArtworkForm;
 import view.classes.ArtworkView;
 import view.interfaces.IArtworkView;
@@ -101,31 +100,8 @@ public class ControllerArtwork implements IControllerArtwork {
 			
 			final int n = JOptionPane.showConfirmDialog(frame, CONFIRM_DELETE,
 					DELETE, JOptionPane.YES_NO_OPTION);
-			
 			if (n == JOptionPane.YES_OPTION) {
 				this.view.clearData(index);
-				for (final Artwork art : this.model.getArtwork()) {
-					if (index < this.model.getArtwork().size() - 1) {
-						if (art.getYear() < 0) {
-							this.view.editData(index, 
-									new Object[] {art.getCode(),
-									art.getTitle(), art.getAuthor(),
-									art.getYear() * -1 + " A.C.",
-									art.getArtisticDiscipline(),
-									art.getTechnique(), art.getHeight() 
-									+ "x" + art.getWidth() + "x" 
-											+ art.getDepth()});
-						} else {
-							this.view.editData(index, 
-									new Object[] {art.getCode(),
-									art.getTitle(), art.getAuthor(),
-									art.getYear() + " D.C.",
-									art.getArtisticDiscipline(),
-									art.getTechnique(), art.getHeight() + "x" 
-									+ art.getWidth() + "x" + art.getDepth()});
-						}
-					}
-				}
 				this.model.getArtwork().remove(index);
 			}
 		} catch (IllegalOperationException e) {
