@@ -96,7 +96,6 @@ public class ArtworkForm extends JDialog implements IArtworkForm {
 	private final AdderComponentPanel adder = AdderComponentPanel.getAdder();
 	
 	private IControllerArtworkForm controller;
-	private int row;
 
 	/**
 	 * Constructor.
@@ -124,27 +123,28 @@ public class ArtworkForm extends JDialog implements IArtworkForm {
 	 * Builds the layout of the JDialog.
 	 */
 	private void buildLayout() {
+		int row = 0;
 		final GridBagLayout layout = new GridBagLayout();
 		final JPanel gbdPanel = new JPanel();
 		gbdPanel.setLayout(layout);
 		this.setFont();
 		
-		this.adder.addComponent(gbdPanel, this.codeLabel, 0, this.row, 1, 1,
+		this.adder.addComponent(gbdPanel, this.codeLabel, 0, row, 1, 1,
 				GridBagConstraints.NORTH, TOP_EDGE_10, layout);
-		this.adder.addComponent(gbdPanel, this.codeField, 1, this.row++, 1, 1,
+		this.adder.addComponent(gbdPanel, this.codeField, 1, row++, 1, 1,
 				GridBagConstraints.NORTHWEST, TOP_EDGE_10, layout);
 		
-		this.adder.addComponent(gbdPanel, this.titleLabel, 0, this.row, 1, 1,
+		this.adder.addComponent(gbdPanel, this.titleLabel, 0, row, 1, 1,
 				GridBagConstraints.NORTH, TOP_EDGE_10, layout);
-		this.adder.addComponent(gbdPanel, this.titleField, 1, this.row++, 1, 1,
+		this.adder.addComponent(gbdPanel, this.titleField, 1, row++, 1, 1,
 				GridBagConstraints.NORTHWEST, TOP_EDGE_10, layout);
 		
-		this.adder.addComponent(gbdPanel, this.authorLabel, 0, this.row, 1, 1,
+		this.adder.addComponent(gbdPanel, this.authorLabel, 0, row, 1, 1,
 				GridBagConstraints.NORTH, TOP_EDGE_10, layout);
-		this.adder.addComponent(gbdPanel, this.authorField, 1, this.row++, 1, 1,
+		this.adder.addComponent(gbdPanel, this.authorField, 1, row++, 1, 1,
 				GridBagConstraints.NORTHWEST, TOP_EDGE_10, layout);
 		
-		this.adder.addComponent(gbdPanel, this.yearLabel, 0, this.row, 1, 1,
+		this.adder.addComponent(gbdPanel, this.yearLabel, 0, row, 1, 1,
 				GridBagConstraints.NORTH, TOP_EDGE_10, layout);
 		
 		final JPanel yearPanel = new JPanel(new FlowLayout());
@@ -154,26 +154,26 @@ public class ArtworkForm extends JDialog implements IArtworkForm {
 		yearPanel.add(this.yearField);
 		yearPanel.add(this.acField);
 		yearPanel.add(this.dcField);
-		this.adder.addComponent(gbdPanel, yearPanel, 1, this.row++, 1, 1,
+		this.adder.addComponent(gbdPanel, yearPanel, 1, row++, 1, 1,
 				GridBagConstraints.NORTHWEST, 1, layout);
 		
-		this.adder.addComponent(gbdPanel, this.artisticLabel, 0, this.row, 1, 1,
+		this.adder.addComponent(gbdPanel, this.artisticLabel, 0, row, 1, 1,
 				GridBagConstraints.NORTH, TOP_EDGE_10, layout);	
 		this.artDiscGroup.add(this.paintingField);
 		this.artDiscGroup.add(this.sculptureField);
 		final JPanel artisticDPanel = new JPanel(new FlowLayout());
 		artisticDPanel.add(this.paintingField);
 		artisticDPanel.add(this.sculptureField);
-		this.adder.addComponent(gbdPanel, artisticDPanel, 1, this.row++, 1, 1,
+		this.adder.addComponent(gbdPanel, artisticDPanel, 1, row++, 1, 1,
 				GridBagConstraints.NORTHWEST, 1, layout);
 		
-		this.adder.addComponent(gbdPanel, this.techniqueLabel, 0, this.row, 1, 1,
+		this.adder.addComponent(gbdPanel, this.techniqueLabel, 0, row, 1, 1,
 				GridBagConstraints.NORTH, TOP_EDGE_10, layout);
 		this.setTechniqueForm(this.techniquesPainting);
 		this.setTechniqueForm(this.materialsSculpture);
-		this.adder.addComponent(gbdPanel, this.techniquesPainting, 1, this.row,
+		this.adder.addComponent(gbdPanel, this.techniquesPainting, 1, row,
 				1, 1, GridBagConstraints.NORTHWEST, TOP_EDGE_7, layout);
-		this.adder.addComponent(gbdPanel, this.materialsSculpture, 1, this.row++,
+		this.adder.addComponent(gbdPanel, this.materialsSculpture, 1, row++,
 				1, 1, GridBagConstraints.NORTHWEST, TOP_EDGE_7, layout);
 		
 		final JPanel dimensionPanel = new JPanel();
@@ -206,7 +206,7 @@ public class ArtworkForm extends JDialog implements IArtworkForm {
 				GridBagConstraints.NORTHWEST, TOP_EDGE_5, gblDim);
 		this.depthField.setEnabled(false);
 		
-		this.adder.addComponent(gbdPanel, dimensionPanel, 0, this.row, 1, 1,
+		this.adder.addComponent(gbdPanel, dimensionPanel, 0, row, 1, 1,
 				GridBagConstraints.NORTH, TOP_EDGE_10, layout);
 		
 		final JPanel descrP = new JPanel(new BorderLayout());
@@ -215,13 +215,13 @@ public class ArtworkForm extends JDialog implements IArtworkForm {
 				JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
 				JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 		descrP.add(jsp, BorderLayout.SOUTH);
-		this.adder.addComponent(gbdPanel, descrP, 1, this.row++, 1, 1,
+		this.adder.addComponent(gbdPanel, descrP, 1, row++, 1, 1,
 				GridBagConstraints.NORTHWEST, TOP_EDGE_10, layout);
 		
 		final JPanel buttonP = new JPanel(new FlowLayout());
 		buttonP.add(this.confirmButton);
 		buttonP.add(this.cancelButton);
-		this.adder.addComponent(gbdPanel, buttonP, 1, this.row, 1, 1,
+		this.adder.addComponent(gbdPanel, buttonP, 1, row, 1, 1,
 				GridBagConstraints.NORTHEAST, TOP_EDGE_10, layout);
 		
 		this.setHandlers();
