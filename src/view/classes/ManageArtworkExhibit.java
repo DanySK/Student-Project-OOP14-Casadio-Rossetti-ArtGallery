@@ -105,7 +105,7 @@ public class ManageArtworkExhibit extends JDialog implements IManageArtworkExhib
 		this.getContentPane().add(panel);
 		this.pack();
 		this.setLocationRelativeTo(null);
-		this.setResizable(true);
+		this.setResizable(false);
 	}
 	
 	/**
