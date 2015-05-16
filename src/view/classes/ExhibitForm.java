@@ -42,12 +42,14 @@ public class ExhibitForm extends JDialog implements IExhibitForm {
 	private static final String FONT_NAME = "Century SchoolBook";
 	private static final double ZERO = 0.00;
 	
+	private final JLabel codeLabel = new JLabel("Codice mostra: ");
 	private final JLabel titleLabel = new JLabel("Titolo mostra: ");
 	private final JLabel curatorLabel = new JLabel("Curatore/i: ");
 	private final JLabel dateBegLabel = new JLabel("Data di inizio: ");
 	private final JLabel dateEndLabel = new JLabel("Data di fine: ");
 	private final JLabel costExLabel = new JLabel("Costo esposizione: ");
 	private final JLabel costTicketLabel = new JLabel("Costo biglietto: ");
+	private final JLabel codeField;
 	private final JTextField titleField = new JTextField(50);
 	private final JTextField curatorField = new JTextField(50);
 	private final JDateChooser dateBegField = new JDateChooser();
@@ -69,11 +71,16 @@ public class ExhibitForm extends JDialog implements IExhibitForm {
 	 * 
 	 * @param frame
 	 * 			the frame that this JDialog refers to.
+	 * @param code
+	 * 			the code of this exhibit.
 	 */
-	public ExhibitForm(final Frame frame) {
+	public ExhibitForm(final Frame frame, final Long code) {
 		super(frame);
 		this.setTitle("Esposizione");
 		this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+		
+		this.codeField = new JLabel(code.toString());
+		
 		this.buildLayout();
 		this.pack();
 		this.setLocationRelativeTo(null);
@@ -84,45 +91,52 @@ public class ExhibitForm extends JDialog implements IExhibitForm {
 	 * Builds the layout of the JDialog.
 	 */
 	private void buildLayout() {
+		int row = 0;
+		
 		final GridBagLayout layout = new GridBagLayout();
 		final JPanel exhibitPanel = new JPanel();
 		exhibitPanel.setLayout(layout);
 		
-		this.adder.addComponent(exhibitPanel, this.titleLabel, 0, 0, 1, 1,
+		this.adder.addComponent(exhibitPanel, this.codeLabel, 0, row, 1, 1,
 				GridBagConstraints.NORTH, TOP_EDGE_10, 0, layout);
-		this.adder.addComponent(exhibitPanel, this.titleField, 1, 0, 3, 1,
+		this.adder.addComponent(exhibitPanel, this.codeField, 1, row++, 1, 1,
 				GridBagConstraints.NORTHWEST, TOP_EDGE_10, 0, layout);
 		
-		this.adder.addComponent(exhibitPanel, this.curatorLabel, 0, 1, 1, 1,
+		this.adder.addComponent(exhibitPanel, this.titleLabel, 0, row, 1, 1,
 				GridBagConstraints.NORTH, TOP_EDGE_10, 0, layout);
-		this.adder.addComponent(exhibitPanel, this.curatorField, 1, 1, 3, 1,
+		this.adder.addComponent(exhibitPanel, this.titleField, 1, row++, 3, 1,
 				GridBagConstraints.NORTHWEST, TOP_EDGE_10, 0, layout);
 		
-		this.adder.addComponent(exhibitPanel, this.dateBegLabel, 0, 2, 1, 1,
+		this.adder.addComponent(exhibitPanel, this.curatorLabel, 0, row, 1, 1,
+				GridBagConstraints.NORTH, TOP_EDGE_10, 0, layout);
+		this.adder.addComponent(exhibitPanel, this.curatorField, 1, row++, 3, 1,
+				GridBagConstraints.NORTHWEST, TOP_EDGE_10, 0, layout);
+		
+		this.adder.addComponent(exhibitPanel, this.dateBegLabel, 0, row, 1, 1,
 				GridBagConstraints.NORTH, TOP_EDGE_10, 0, layout);
 		this.setDateComponent(this.dateBegField, exhibitPanel, 1, layout);
-		this.adder.addComponent(exhibitPanel, dateEndLabel, 2, 2, 1, 1,
+		this.adder.addComponent(exhibitPanel, dateEndLabel, 2, row, 1, 1,
 				GridBagConstraints.NORTH, TOP_EDGE_10, 0, layout);
 		this.setDateComponent(this.dateEndField, exhibitPanel, 3, layout);
 		
-		this.adder.addComponent(exhibitPanel, this.costExLabel, 0, 3, 1, 1,
+		this.adder.addComponent(exhibitPanel, this.costExLabel, 0, ++row, 1, 1,
 				GridBagConstraints.NORTH, TOP_EDGE_10, 0, layout);
 		final JPanel costPanelEx = new JPanel(new FlowLayout());
 		this.setCostComponent(costPanelEx, this.costExField);
-		this.adder.addComponent(exhibitPanel, costPanelEx, 1, 3, 1, 1, 
+		this.adder.addComponent(exhibitPanel, costPanelEx, 1, row, 1, 1, 
 				GridBagConstraints.NORTHWEST, TOP_EDGE_5, 0, layout);
 		
-		this.adder.addComponent(exhibitPanel, this.costTicketLabel, 2, 3, 1, 1,
+		this.adder.addComponent(exhibitPanel, this.costTicketLabel, 2, row, 1, 1,
 				GridBagConstraints.NORTH, TOP_EDGE_10, 0, layout);
 		final JPanel cosTicketPanel = new JPanel(new FlowLayout());
 		this.setCostComponent(cosTicketPanel, this.costTckJS);
-		this.adder.addComponent(exhibitPanel, cosTicketPanel, 3, 3, 1, 1,
+		this.adder.addComponent(exhibitPanel, cosTicketPanel, 3, row++, 1, 1,
 				GridBagConstraints.NORTHWEST, TOP_EDGE_5, 0, layout);
 		
 		final JPanel buttonPanel = new JPanel(new FlowLayout());
 		buttonPanel.add(this.ok);
 		buttonPanel.add(this.cancel);
-		this.adder.addComponent(exhibitPanel, buttonPanel, 3, 4, 1, 1, 
+		this.adder.addComponent(exhibitPanel, buttonPanel, 3, row, 1, 1, 
 				GridBagConstraints.NORTHEAST, TOP_EDGE_10, 0, layout);
 		
 		this.setFont();
@@ -147,7 +161,7 @@ public class ExhibitForm extends JDialog implements IExhibitForm {
 			final int column, final GridBagLayout layout) {
 		date.setPreferredSize(new JTextField(DATE_SIZE).getPreferredSize());
 		date.setDateFormatString("dd/MM/yyyy");
-		this.adder.addComponent(panel, date, column, 2, 1, 1,
+		this.adder.addComponent(panel, date, column, 3, 1, 1,
 				GridBagConstraints.NORTHWEST, TOP_EDGE_7, 0, layout);
 	}
 	
@@ -171,6 +185,8 @@ public class ExhibitForm extends JDialog implements IExhibitForm {
 		final Font font = new Font(FONT_NAME, Font.BOLD, FONT_SIZE);
 		final Font fontField = new Font(FONT_NAME, Font.PLAIN, FONT_SIZE);
 		
+		this.codeLabel.setFont(font);
+		this.codeField.setFont(fontField);
 		this.titleLabel.setFont(font);
 		this.titleField.setFont(fontField);
 		this.curatorLabel.setFont(font);
@@ -194,9 +210,9 @@ public class ExhibitForm extends JDialog implements IExhibitForm {
 		this.ok.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(final ActionEvent e) {
-				controller.commandConfirm(getTitleEx(), getCurator(),
-						getDateBeginning(), getDateEnd(), getCostEx(),
-						getCostTicket(), ExhibitForm.this);
+				controller.commandConfirm(getCode(), getTitleEx(), 
+						getCurator(), getDateBeginning(), getDateEnd(),
+						getCostEx(), getCostTicket(), ExhibitForm.this);
 			}
 		});
 		this.cancel.addActionListener(new ActionListener() {
@@ -211,6 +227,11 @@ public class ExhibitForm extends JDialog implements IExhibitForm {
 	@Override
 	public void attachController(final IControllerExhibitForm ctrl) {
 		this.controller = ctrl;
+	}
+	
+	@Override
+	public Long getCode() {
+		return Long.parseLong(this.codeField.getText());
 	}
 		
 	@Override
