@@ -211,6 +211,8 @@ public class ArtworkForm extends JDialog implements IArtworkForm {
 		
 		final JPanel descrP = new JPanel(new BorderLayout());
 		descrP.add(this.descriptionLabel, BorderLayout.NORTH);
+		this.descriptionField.setLineWrap(true);
+		this.descriptionField.setWrapStyleWord(true);
 		final JScrollPane jsp = new JScrollPane(this.descriptionField, 
 				JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
 				JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
