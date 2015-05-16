@@ -22,6 +22,13 @@ public interface IExhibitForm {
 	void attachController(final IControllerExhibitForm ctrl);
 	
 	/**
+	 * Return the code of the exhibit.
+	 * 
+	 * @return the exhibit's code.
+	 */
+	Long getCode();
+	
+	/**
 	 * Return the title of the exhibit typed.
 	 * 
 	 * @return the exhibit's title.
