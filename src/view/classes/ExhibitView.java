@@ -39,6 +39,7 @@ public class ExhibitView extends JFrame implements IExhibitView {
 		"Curatore/i", "Data inizio", "Data fine", "Num. pezzi", 
 		"Costo esposizione", "Costo biglietto"};
 	private static final Object[][] INIT_DATA = new Object[][] {};
+	private static final int N_COLUMN_PIECES = 5;
 	private static final int FONT_SIZE = 14;
 	private static final String FONT_NAME = "Century SchoolBook";
 	private static final String DATE_FORMAT = "dd/MM/yyyy";
@@ -208,7 +209,7 @@ public class ExhibitView extends JFrame implements IExhibitView {
 	
 	@Override
 	public void editNPiecesCell(final int nPieces, final int row) {
-		this.dtm.setValueAt(nPieces, row, 4);
+		this.dtm.setValueAt(nPieces, row, N_COLUMN_PIECES);
 	}
 	
 	@Override
