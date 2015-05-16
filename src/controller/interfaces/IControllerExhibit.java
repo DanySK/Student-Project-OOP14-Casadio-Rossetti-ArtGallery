@@ -57,8 +57,10 @@ public interface IControllerExhibit {
 	void commandArtwork(final int index, final JFrame frame);
 	
 	/**
-	 * Closes the frame and saves the model in to a file. Show an error message
-	 * if the writing fails.
+	 * Checks that no exhibit has artworks assigned, otherwise shows an error 
+	 * message and obstructs the closing of the view. If there aren't exhibits 
+	 * without artworks assigned, closes the frame and saves the model in to a 
+	 * file. Show an error message if the writing fails.
 	 * 
 	 * @param frame
 	 * 			the frame of the view.
