@@ -35,9 +35,9 @@ import view.interfaces.IExhibitView;
 public class ExhibitView extends JFrame implements IExhibitView {
 
 	private static final long serialVersionUID = 8645740806974401230L;
-	private static final String[] PROPS = new String[] {"Titolo", "Curatore/i",
-		"Data inizio", "Data fine", "Num. pezzi", "Costo esposizione",
-		"Costo biglietto"};
+	private static final String[] PROPS = new String[] {"Codice", "Titolo", 
+		"Curatore/i", "Data inizio", "Data fine", "Num. pezzi", 
+		"Costo esposizione", "Costo biglietto"};
 	private static final Object[][] INIT_DATA = new Object[][] {};
 	private static final int FONT_SIZE = 14;
 	private static final String FONT_NAME = "Century SchoolBook";
@@ -186,21 +186,21 @@ public class ExhibitView extends JFrame implements IExhibitView {
 	}
 	
 	@Override
-	public void addData(final String title, final String curator,
-			final Calendar dateB, final Calendar dateE, final int nPieces,
-			final double costEx, final double costTicket) {
-		this.dtm.addRow(new Object[] {title, curator, 
+	public void addData(final Long code, final String title, 
+			final String curator, final Calendar dateB, final Calendar dateE,
+			final int nPieces, final double costEx, final double costTicket) {
+		this.dtm.addRow(new Object[] {code, title, curator, 
 				new SimpleDateFormat(DATE_FORMAT, Locale.ITALY).format(dateB.getTime()),
 				new SimpleDateFormat(DATE_FORMAT, Locale.ITALY).format(dateE.getTime()),
 				nPieces, costEx, costTicket});
 	}
 	
 	@Override
-	public void editData(final int row, final String title, final String curator,
-			final Calendar dateB, final Calendar dateE, final int nPieces,
-			final double costEx, final double costTicket) {
+	public void editData(final int row, final Long code, final String title,
+			final String curator, final Calendar dateB, final Calendar dateE,
+			final int nPieces, final double costEx, final double costTicket) {
 		this.dtm.removeRow(row);
-		this.dtm.insertRow(row, new Object[] {title, curator, 
+		this.dtm.insertRow(row, new Object[] {code, title, curator, 
 				new SimpleDateFormat(DATE_FORMAT, Locale.ITALY).format(dateB.getTime()),
 				new SimpleDateFormat(DATE_FORMAT, Locale.ITALY).format(dateE.getTime()),
 				nPieces, costEx, costTicket});
