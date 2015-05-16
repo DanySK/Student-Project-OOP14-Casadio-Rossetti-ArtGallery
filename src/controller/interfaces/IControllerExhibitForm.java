@@ -17,6 +17,8 @@ public interface IControllerExhibitForm {
 	 * the exhibit in the model and in the view. Show an error message if the 
 	 * fields are incorrect.
 	 * 
+	 * @param code
+	 * 			the exhibit's code.
 	 * @param title
 	 * 			the exhibit's title.
 	 * @param curator
@@ -32,8 +34,9 @@ public interface IControllerExhibitForm {
 	 * @param form
 	 * 			the current active form.
 	 */
-	void commandConfirm(final String title, final String curator,
-			final Calendar dateB, final Calendar dateE, final double costEx,
-			final double costTicket, final ExhibitForm form);
+	void commandConfirm(final Long code, final String title, 
+			final String curator, final Calendar dateB, final Calendar dateE,
+			final double costEx, final double costTicket, 
+			final ExhibitForm form);
 	
 }
