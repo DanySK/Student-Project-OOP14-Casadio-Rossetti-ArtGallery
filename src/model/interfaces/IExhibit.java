@@ -12,6 +12,13 @@ import java.util.List;
 public interface IExhibit {
 	
 	/**
+	 * Return the code of the exhibit.
+	 * 
+	 * @return the code of the exhibit.
+	 */
+	Long getCode();
+	
+	/**
 	 * Return the title of the exhibit.
 	 * 
 	 * @return the title of the exhibit.
