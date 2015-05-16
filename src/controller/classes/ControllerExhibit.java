@@ -68,7 +68,11 @@ public class ControllerExhibit implements IControllerExhibit {
 	
 	@Override
 	public void commandNew(final JFrame frame) {
-		final ExhibitForm exhibit = new ExhibitForm(frame);
+		ExhibitForm exhibit = new ExhibitForm(frame, 1L);
+		if (this.model.getExhibit().size() != 0) {
+			exhibit = new ExhibitForm(frame, this.model.getExhibit()
+					.get(this.model.getExhibit().size() - 1).getCode() + 1); 
+		}
 	    exhibit.reinit();
 	    exhibit.setVisible(true);
 	    new ControllerExhibitForm(this.model, exhibit, frame, this.view, -1);
@@ -81,7 +85,8 @@ public class ControllerExhibit implements IControllerExhibit {
 					.before(Calendar.getInstance())) {
 				throw new IllegalOperationException(WRONG_EDIT_COMMAND);
 			} else {
-				final ExhibitForm exhibit = new ExhibitForm(frame);
+				final ExhibitForm exhibit = new ExhibitForm(frame, 
+						this.model.getExhibit().get(index).getCode());
 				exhibit.setForm(index, this.model);
 				exhibit.setVisible(true);
 				new ControllerExhibitForm(this.model, exhibit, frame, 
