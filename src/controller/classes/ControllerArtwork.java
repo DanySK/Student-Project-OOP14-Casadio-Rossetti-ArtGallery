@@ -9,6 +9,7 @@ import javax.swing.JOptionPane;
 
 import model.classes.ArtGallery;
 import model.classes.Exhibit;
+import view.classes.MainView;
 import view.classes.ArtworkForm;
 import view.classes.ArtworkView;
 import view.interfaces.IArtworkView;
@@ -29,10 +30,11 @@ public class ControllerArtwork implements IControllerArtwork {
 			+ " questa opera d'arte?";
 	private static final String DELETE_IMPOSSIBLE = "Impossibile cancellare questa opera d'arte, "
 			+ "perchè usata in almeno una esposizione.";
-	private static final String ERROR_SAVING = "Errore nel salvataggio del file.";
+	private static final String SAVE_ERROR = "Errore nel salvataggio del file.";
 	
 	private final ArtGallery model;
 	private final IArtworkView view;
+	private final MainView mainView;
 	private final String path;
 	
 	/**
@@ -42,14 +44,18 @@ public class ControllerArtwork implements IControllerArtwork {
 	 * 			the model.
 	 * @param newView
 	 * 			the view.
+	 * @param newMainView
+	 * 			the view of the home of the program.
 	 * @param newPath
 	 * 			the data path where the model is saved.
 	 */
 	public ControllerArtwork(final ArtGallery newModel, 
-			final IArtworkView newView, final String newPath) {
+			final IArtworkView newView, final MainView newMainView, 
+			final String newPath) {
 		this.model = newModel;
 		this.view = newView;
 		this.view.attachController(this);
+		this.mainView = newMainView;
 		this.path = newPath;
 	}
 	
@@ -118,8 +124,9 @@ public class ControllerArtwork implements IControllerArtwork {
 			out.writeObject(this.model);
 			out.close();
 			frame.setVisible(false);
+			this.mainView.setVisible(true);
 		} catch (IOException e) {
-			JOptionPane.showMessageDialog(frame, ERROR_SAVING, ERROR,
+			JOptionPane.showMessageDialog(frame, SAVE_ERROR, ERROR,
 					JOptionPane.ERROR_MESSAGE);
 		}
 	}
