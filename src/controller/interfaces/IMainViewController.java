@@ -1,6 +1,7 @@
 package controller.interfaces;
 
-import view.classes.MainView;
+import view.interfaces.IMainView;
+import controller.classes.MainViewController;
 
 /**
  * The interface for the {@link MainViewController}.
@@ -16,7 +17,7 @@ public interface IMainViewController {
 	 * @param v
 	 * 			the new view.
 	 */
-	void addView(final MainView v);
+	void addView(final IMainView v);
 	
 	/**
 	 * Creates a new model for the archive of the art gallery or loads it from 

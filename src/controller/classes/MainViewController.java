@@ -15,6 +15,7 @@ import view.classes.ExhibitView;
 import view.classes.MainView;
 import view.interfaces.IArtworkView;
 import view.interfaces.IExhibitView;
+import view.interfaces.IMainView;
 import controller.interfaces.IMainViewController;
 
 /**
@@ -50,8 +51,8 @@ public class MainViewController implements IMainViewController {
 	}
 	
 	@Override
-	public void addView(final MainView v) {
-		//v.attachViewObserver(this);
+	public void addView(final IMainView v) {
+		v.attachController(this);
 	}
 
 	@Override
@@ -102,10 +103,10 @@ public class MainViewController implements IMainViewController {
 		} else {
 			final IExhibitView exView = new ExhibitView();
 			for (final IExhibit exhibit : model.getExhibit()) {
-				exView.addData(exhibit.getTitleExhibit(), exhibit.getCurator(),
-						exhibit.getBeginning(), exhibit.getEnd(), 
-						exhibit.getNumPieces(), exhibit.getCostExhibit(),
-						exhibit.getCostTicket());
+				exView.addData(exhibit.getCode(), exhibit.getTitleExhibit(),
+						exhibit.getCurator(), exhibit.getBeginning(), 
+						exhibit.getEnd(), exhibit.getNumPieces(), 
+						exhibit.getCostExhibit(), exhibit.getCostTicket());
 			}
 			new ControllerExhibit(model, exView, this.view, this.path + ARCHIVE_FILE);
 			this.view.setVisible(false);
