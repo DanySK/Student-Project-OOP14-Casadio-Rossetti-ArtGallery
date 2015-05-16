@@ -54,15 +54,17 @@ public final class AdderComponentPanel {
 	 * 			the number of the rows occupied by the component.
 	 * @param align
 	 * 			the position of the component in the cell.
-	 * @param ins
+	 * @param insTop
 	 * 			the top edge of the component.
+	 * @param insBottom
+	 * 			the bottom edge of the component.
 	 * @param layout
 	 * 			the layout that must be applied the association between the
 	 * 			component and the GridBagConstraints.
 	 */
 	public void addComponent(final JPanel p, final JComponent c, final int x,
 			final int y, final int gwidth, final int gheight, final int align,
-			final int ins, final GridBagLayout layout) {
+			final int insTop, final int insBottom, final GridBagLayout layout) {
 		
 		final GridBagConstraints gbc = new GridBagConstraints();
 		gbc.gridx = x;
@@ -72,7 +74,8 @@ public final class AdderComponentPanel {
 		gbc.gridheight = gheight;
 		gbc.fill = GridBagConstraints.NONE;
 		gbc.anchor = align;
-		gbc.insets.top = ins;
+		gbc.insets.top = insTop;
+		gbc.insets.bottom = insBottom;
 		layout.setConstraints(c, gbc);
 		p.add(c);
 	}
