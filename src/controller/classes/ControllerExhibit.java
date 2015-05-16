@@ -10,8 +10,10 @@ import javax.swing.JOptionPane;
 
 import model.classes.ArtGallery;
 import model.classes.Artwork;
+import model.interfaces.IExhibit;
 import view.classes.ExhibitForm;
 import view.classes.ExhibitView;
+import view.classes.MainView;
 import view.classes.ManageArtworkExhibit;
 import view.interfaces.IExhibitView;
 import controller.interfaces.IControllerExhibit;
@@ -33,10 +35,13 @@ public class ControllerExhibit implements IControllerExhibit {
 	private static final String DELETE = "ELIMINA";
 	private static final String CONFIRM_DELETE = "Sei sicuro di voler eliminare"
 			+ " questa esposizione?";
+	private static final String ERROR_CLOSE = "Impossibile chiudere, perchè c'è"
+			+ " almeno una esposizione che non ha delle opere d'arte assegnate.";
 	private static final String ERROR_SAVING = "Errore nel salvataggio del file.";
 	
 	private final IExhibitView view;
 	private final ArtGallery model;
+	private final MainView mainView;
 	private final String path;
 	
 	/**
@@ -46,14 +51,18 @@ public class ControllerExhibit implements IControllerExhibit {
 	 * 			the model.
 	 * @param newView
 	 * 			the view.
+	 * @param newMainView
+	 * 			the view of the home of the program.
 	 * @param newPath
 	 * 			the data path where the model is saved.
 	 */
 	public ControllerExhibit(final ArtGallery newModel, 
-			final IExhibitView newView, final String newPath) {
+			final IExhibitView newView, final MainView newMainView, 
+			final String newPath) {
 		this.model = newModel;
 		this.view = newView;
 		this.view.attachController(this);
+		this.mainView = newMainView;
 		this.path = newPath;
 	}
 	
@@ -127,15 +136,26 @@ public class ControllerExhibit implements IControllerExhibit {
 	
 	@Override
 	public void commandClose(final JFrame frame) {
-		try {
-			final ObjectOutputStream out = new ObjectOutputStream(
-					new FileOutputStream(this.path));
-			out.writeObject(this.model);
-			out.close();
-			frame.setVisible(false);
-		} catch (IOException e) {
-			JOptionPane.showMessageDialog(frame, ERROR_SAVING, ERROR,
+		boolean isEmpty = false;
+		for (final IExhibit ex : this.model.getExhibit()) {
+			if (ex.getArtworks().size() == 0) {
+				isEmpty = true;
+			}
+		}
+		if (isEmpty) {
+			JOptionPane.showMessageDialog(frame, ERROR_CLOSE, ERROR,
 					JOptionPane.ERROR_MESSAGE);
+		} else {
+			try {
+				final ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(this.path));
+				out.writeObject(this.model);
+				out.close();
+				frame.setVisible(false);
+				this.mainView.setVisible(true);
+			} catch (IOException e) {
+				JOptionPane.showMessageDialog(frame, ERROR_SAVING, ERROR,
+						JOptionPane.ERROR_MESSAGE);
+			}
 		}
 	}
 
