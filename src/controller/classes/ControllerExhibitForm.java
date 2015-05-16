@@ -71,9 +71,10 @@ public class ControllerExhibitForm implements IControllerExhibitForm {
 	}
 	
 	@Override
-	public void commandConfirm(final String title, final String curator,
-			final Calendar dateB, final Calendar dateE, final double costEx,
-			final double costTicket, final ExhibitForm form) {
+	public void commandConfirm(final Long code, final String title, 
+			final String curator, final Calendar dateB, final Calendar dateE,
+			final double costEx, final double costTicket, 
+			final ExhibitForm form) {
 		
 		try {
 			if (title.isEmpty() || curator.isEmpty() || dateB == null 
@@ -95,18 +96,18 @@ public class ControllerExhibitForm implements IControllerExhibitForm {
 				throw new IllegalArgumentException(WRONG_COST_TICKET);
 			} else {
 				if (this.edit == -1) {
-					this.model.addExhibit(new Exhibit(title, curator, dateB,
-							dateE, costEx, costTicket));
+					this.model.addExhibit(new Exhibit(code, title, curator, 
+							dateB, dateE, costEx, costTicket));
 					final int index = this.model.getExhibit().size() - 1;
-					this.viewArtG.addData(title, curator, dateB, dateE, 
+					this.viewArtG.addData(code, title, curator, dateB, dateE, 
 							this.model.getExhibit().get(index).getNumPieces(),
 							costEx, costTicket);
 				} else {
-					this.model.getExhibit().set(this.edit, new Exhibit(title,
-							curator, dateB, dateE, costEx, costTicket));
-					this.viewArtG.editData(this.edit, title, curator, dateB, 
-							dateE, this.model.getExhibit().get(this.edit).getNumPieces(),
-							costEx, costTicket);
+					this.model.getExhibit().set(this.edit, new Exhibit(code, 
+							title, curator, dateB, dateE, costEx, costTicket));
+					this.viewArtG.editData(this.edit, code, title, curator, 
+							dateB, dateE, this.model.getExhibit().get(this.edit)
+							.getNumPieces(), costEx, costTicket);
 				}				
 				form.setVisible(false);				
 			}
