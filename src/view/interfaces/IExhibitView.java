@@ -23,6 +23,8 @@ public interface IExhibitView {
 	/**
 	 * Adds a new exhibit to be displayed.
 	 * 
+	 * @param code
+	 * 			the exhibit's code.
 	 * @param title
 	 * 			the exhibit's title.
 	 * @param curator
@@ -38,15 +40,17 @@ public interface IExhibitView {
 	 * @param costTicket
 	 * 			the ticket's cost of the exhibit.
 	 */
-	void addData(final String title, final String curator, final Calendar dateB,
-			final Calendar dateE, final int nPieces, final double costEx,
-			final double costTicket);
+	void addData(final Long code, final String title, final String curator, 
+			final Calendar dateB, final Calendar dateE, final int nPieces, 
+			final double costEx, final double costTicket);
 	
 	/**
 	 * Changes the selected exhibit.
 	 * 
 	 * @param row
 	 * 			the selected table's row.
+	 * @param code
+	 * 			the exhibit's code.
 	 * @param title
 	 * 			the exhibit's title.
 	 * @param curator
@@ -62,9 +66,9 @@ public interface IExhibitView {
 	 * @param costTicket
 	 * 			the ticket's cost of the exhibit.
 	 */
-	void editData(final int row, final String title, final String curator,
-			final Calendar dateB, final Calendar dateE, final int nPieces,
-			final double costEx, final double costTicket);
+	void editData(final int row, final Long code, final String title, 
+			final String curator, final Calendar dateB, final Calendar dateE, 
+			final int nPieces, final double costEx, final double costTicket);
 	
 	/**
 	 * Changes the cell "Num. pezzi" of the specific selected exhibit.
