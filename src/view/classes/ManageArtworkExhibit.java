@@ -88,9 +88,9 @@ public class ManageArtworkExhibit extends JDialog implements IManageArtworkExhib
 		final GridBagLayout layoutButton = new GridBagLayout();
 		final JPanel panelButton = new JPanel(layoutButton);
 		this.adder.addComponent(panelButton, this.addButton, 0, 0, 1, 1,
-				GridBagConstraints.NORTH, TOP_EDGE, layoutButton);
+				GridBagConstraints.NORTH, TOP_EDGE, 0, layoutButton);
 		this.adder.addComponent(panelButton, this.removeButton, 0, 1, 1, 1,
-				GridBagConstraints.NORTH, TOP_EDGE, layoutButton);
+				GridBagConstraints.NORTH, TOP_EDGE, 0, layoutButton);
 		this.addButton.setToolTipText("Aggiungi");
 		this.removeButton.setToolTipText("Cancella");
 		panel.add(panelButton);
@@ -125,7 +125,7 @@ public class ManageArtworkExhibit extends JDialog implements IManageArtworkExhib
 	private JTable setTable(final JPanel panel, final GridBagLayout layout, 
 			final JLabel titleTable, final DefaultTableModel modelT) {
 		this.adder.addComponent(panel, titleTable, 0, 0, 1, 1,
-				GridBagConstraints.NORTHWEST, TOP_EDGE, layout);
+				GridBagConstraints.NORTHWEST, TOP_EDGE, 0, layout);
 		
 		final JTable table = new JTable(modelT) {
 			private static final long serialVersionUID = 6272702269758796145L;
@@ -141,7 +141,7 @@ public class ManageArtworkExhibit extends JDialog implements IManageArtworkExhib
 				ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS,
 				ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 		this.adder.addComponent(panel, jsp, 0, 1, 1, 1, 
-				GridBagConstraints.NORTH, TOP_EDGE, layout);
+				GridBagConstraints.NORTH, TOP_EDGE, 0, layout);
 		
 		titleTable.setFont(this.font);
 		table.getTableHeader().setFont(this.font);

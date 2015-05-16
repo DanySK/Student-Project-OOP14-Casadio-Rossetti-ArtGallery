@@ -89,40 +89,41 @@ public class ExhibitForm extends JDialog implements IExhibitForm {
 		exhibitPanel.setLayout(layout);
 		
 		this.adder.addComponent(exhibitPanel, this.titleLabel, 0, 0, 1, 1,
-				GridBagConstraints.NORTH, TOP_EDGE_10, layout);
+				GridBagConstraints.NORTH, TOP_EDGE_10, 0, layout);
 		this.adder.addComponent(exhibitPanel, this.titleField, 1, 0, 3, 1,
-				GridBagConstraints.NORTHWEST, TOP_EDGE_10, layout);
+				GridBagConstraints.NORTHWEST, TOP_EDGE_10, 0, layout);
 		
 		this.adder.addComponent(exhibitPanel, this.curatorLabel, 0, 1, 1, 1,
-				GridBagConstraints.NORTH, TOP_EDGE_10, layout);
+				GridBagConstraints.NORTH, TOP_EDGE_10, 0, layout);
 		this.adder.addComponent(exhibitPanel, this.curatorField, 1, 1, 3, 1,
-				GridBagConstraints.NORTHWEST, TOP_EDGE_10, layout);
+				GridBagConstraints.NORTHWEST, TOP_EDGE_10, 0, layout);
 		
 		this.adder.addComponent(exhibitPanel, this.dateBegLabel, 0, 2, 1, 1,
-				GridBagConstraints.NORTH, TOP_EDGE_10, layout);
+				GridBagConstraints.NORTH, TOP_EDGE_10, 0, layout);
 		this.setDateComponent(this.dateBegField, exhibitPanel, 1, layout);
 		this.adder.addComponent(exhibitPanel, dateEndLabel, 2, 2, 1, 1,
-				GridBagConstraints.NORTH, TOP_EDGE_10, layout);
+				GridBagConstraints.NORTH, TOP_EDGE_10, 0, layout);
 		this.setDateComponent(this.dateEndField, exhibitPanel, 3, layout);
 		
 		this.adder.addComponent(exhibitPanel, this.costExLabel, 0, 3, 1, 1,
-				GridBagConstraints.NORTH, TOP_EDGE_10, layout);
+				GridBagConstraints.NORTH, TOP_EDGE_10, 0, layout);
 		final JPanel costPanelEx = new JPanel(new FlowLayout());
 		this.setCostComponent(costPanelEx, this.costExField);
 		this.adder.addComponent(exhibitPanel, costPanelEx, 1, 3, 1, 1, 
-				GridBagConstraints.NORTHWEST, TOP_EDGE_5, layout);
+				GridBagConstraints.NORTHWEST, TOP_EDGE_5, 0, layout);
 		
 		this.adder.addComponent(exhibitPanel, this.costTicketLabel, 2, 3, 1, 1,
-				GridBagConstraints.NORTH, TOP_EDGE_10, layout);
+				GridBagConstraints.NORTH, TOP_EDGE_10, 0, layout);
 		final JPanel cosTicketPanel = new JPanel(new FlowLayout());
 		this.setCostComponent(cosTicketPanel, this.costTckJS);
 		this.adder.addComponent(exhibitPanel, cosTicketPanel, 3, 3, 1, 1,
-				GridBagConstraints.NORTHWEST, TOP_EDGE_5, layout);
+				GridBagConstraints.NORTHWEST, TOP_EDGE_5, 0, layout);
 		
 		final JPanel buttonPanel = new JPanel(new FlowLayout());
 		buttonPanel.add(this.ok);
 		buttonPanel.add(this.cancel);
-		this.adder.addComponent(exhibitPanel, buttonPanel, 3, 4, 1, 1, GridBagConstraints.NORTHEAST, TOP_EDGE_10, layout);
+		this.adder.addComponent(exhibitPanel, buttonPanel, 3, 4, 1, 1, 
+				GridBagConstraints.NORTHEAST, TOP_EDGE_10, 0, layout);
 		
 		this.setFont();
 		this.setHandlers();
@@ -147,7 +148,7 @@ public class ExhibitForm extends JDialog implements IExhibitForm {
 		date.setPreferredSize(new JTextField(DATE_SIZE).getPreferredSize());
 		date.setDateFormatString("dd/MM/yyyy");
 		this.adder.addComponent(panel, date, column, 2, 1, 1,
-				GridBagConstraints.NORTHWEST, TOP_EDGE_7, layout);
+				GridBagConstraints.NORTHWEST, TOP_EDGE_7, 0, layout);
 	}
 	
 	/**
