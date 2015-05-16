@@ -18,6 +18,7 @@ public class Exhibit implements IExhibit, Serializable {
 	private static final long serialVersionUID = -717882106580253340L;
 	private static final int PRIME = 31;
 	
+	private final Long codeExhibit;
 	private final String titleExhibit;
 	private final String curator;
 	private final Calendar beginning;
@@ -28,6 +29,8 @@ public class Exhibit implements IExhibit, Serializable {
 	
 	/**
 	 * Constructor.
+	 * @param newCode
+	 * 			the exhibit's code.
 	 * @param newTitle
 	 * 			the exhibit's title.
 	 * @param newCurator
@@ -41,9 +44,11 @@ public class Exhibit implements IExhibit, Serializable {
 	 * @param newCostTicket
 	 * 			the cost of the ticket of this exhibit.
 	 */
-	public Exhibit(final String newTitle, final String newCurator, 
-			final Calendar newBeginning, final Calendar newEnd, 
-			final double newCostExhibit, final double newCostTicket) {
+	public Exhibit(final Long newCode, final String newTitle, 
+			final String newCurator, final Calendar newBeginning, 
+			final Calendar newEnd, final double newCostExhibit, 
+			final double newCostTicket) {
+		this.codeExhibit = newCode;
 		this.titleExhibit = newTitle;
 		this.curator = newCurator;
 		this.beginning = newBeginning;
@@ -51,6 +56,11 @@ public class Exhibit implements IExhibit, Serializable {
 		this.artworks = new ArrayList<>();
 		this.costExhibit = newCostExhibit;
 		this.costTicket = newCostTicket;
+	}
+	
+	@Override
+	public Long getCode() {
+		return this.codeExhibit;
 	}
 	
 	@Override
