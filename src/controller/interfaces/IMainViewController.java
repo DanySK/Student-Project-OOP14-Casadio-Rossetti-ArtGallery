@@ -35,17 +35,23 @@ public interface IMainViewController {
 	void exhibitCmd();
 	
 	/**
-	 * 
+	 * Creates a new model for the ticket office or loads it from a file.
+	 * It also creates or loads the art gallery model, in order to have
+	 * a complete view of all the exhibits.
+	 * Then the method creates the relative controller, checking if new
+	 * exhibits have to be added and saved to the file, and adds the view.
 	 */
 	void ticketOfficeCmd();
 	
 	/**
-	 * 
+	 * Creates a new model for the balance or loads it from a file.
+	 * Then the method creates the relative controller and adds the view.
 	 */
 	void balanceCmd();
 	
 	/**
-	 * 
+	 * Creates a new model for the classification, the relative controller
+	 * and adds the view. 
 	 */
 	void classificationCmd();
 	
