@@ -115,6 +115,8 @@ public class Exhibit implements IExhibit, Serializable {
 				+ ((artworks == null) ? 0 : artworks.hashCode());
 		result = PRIME * result
 				+ ((beginning == null) ? 0 : beginning.hashCode());
+		result = PRIME * result
+				+ ((codeExhibit == null) ? 0 : codeExhibit.hashCode());
 		long temp;
 		temp = Double.doubleToLongBits(costExhibit);
 		result = PRIME * result + (int) (temp ^ (temp >>> 32));
@@ -151,6 +153,13 @@ public class Exhibit implements IExhibit, Serializable {
 				return false;
 			}
 		} else if (!beginning.equals(other.beginning)) {
+			return false;
+		}
+		if (codeExhibit == null) {
+			if (other.codeExhibit != null) {
+				return false;
+			}
+		} else if (!codeExhibit.equals(other.codeExhibit)) {
 			return false;
 		}
 		if (Double.doubleToLongBits(costExhibit) != Double
