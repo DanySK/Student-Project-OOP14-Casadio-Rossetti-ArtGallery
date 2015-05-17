@@ -4,18 +4,29 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
+import java.util.Calendar;
+import java.util.ListIterator;
 
 import javax.swing.JOptionPane;
 
+import model.classes.Balance;
+import model.classes.Exhibit;
+import model.classes.SalesManagement;
 import model.classes.ArtGallery;
 import model.interfaces.IArtwork;
 import model.interfaces.IExhibit;
+import view.classes.ClassificationView;
+import view.classes.BalanceView;
+import view.classes.TicketOfficeView;
 import view.classes.ArtworkView;
 import view.classes.ExhibitView;
 import view.classes.MainView;
 import view.interfaces.IArtworkView;
 import view.interfaces.IExhibitView;
 import view.interfaces.IMainView;
+import controller.classes.ClassificationController;
+import controller.classes.BalanceController;
+import controller.classes.TicketOfficeController;
 import controller.interfaces.IMainViewController;
 
 /**
@@ -29,6 +40,10 @@ public class MainViewController implements IMainViewController {
 
 	private static final String ARCHIVE_FILE = System.getProperty("file.separator")
 			+ "Archive.agm";
+	private static final String SALES_FILE = System.getProperty("file.separator") 
+			+ "SalesManagement.agm";
+	private static final String BALANCE_FILE = System.getProperty("file.separator") 
+			+ "Balance.agm";
 	private static final String ERROR = "ERRORE";
 	private static final String LOAD_ERROR = "Errore nel caricamento.";
 	private static final String OPEN_EX_ERROR = "Impossibile vedere le "
@@ -115,22 +130,112 @@ public class MainViewController implements IMainViewController {
 
 	@Override
 	public void ticketOfficeCmd() {
+		final TicketOfficeView v = new TicketOfficeView();
+		SalesManagement salesModel = new SalesManagement();
+		ArtGallery galleryModel = new ArtGallery();
+		try {
+			if (this.isFilePresent(this.path + SALES_FILE)) {
+				final ObjectInputStream in = new ObjectInputStream(new FileInputStream(this.path + SALES_FILE));
+				salesModel = (SalesManagement) in.readObject();
+				in.close();
+			}
+			if (this.isFilePresent(this.path + ARCHIVE_FILE)) {
+				final ObjectInputStream in2 = new ObjectInputStream(new FileInputStream(this.path + ARCHIVE_FILE));
+				galleryModel = (ArtGallery) in2.readObject();
+				in2.close();
+			}
+		} catch (IOException | ClassNotFoundException ex) {
+			JOptionPane.showMessageDialog(this.view, LOAD_ERROR, ERROR, JOptionPane.ERROR_MESSAGE);
+		}
+			
+		TicketOfficeController c = new TicketOfficeController(this.view, v, galleryModel, salesModel, this.path + SALES_FILE);
+		this.checkNewExPresent(salesModel, galleryModel, c);
+		
+		c = new TicketOfficeController(this.view, v, galleryModel, salesModel, this.path + SALES_FILE);			
+		c.addView(v);
+		
+		this.view.setVisible(false);
 
 	}
 
 	@Override
 	public void balanceCmd() {
-
+		final BalanceView v = new BalanceView();
+		SalesManagement salesModel = new SalesManagement();
+		Balance balanceModel = new Balance();
+		if (!this.isFilePresent(this.path + ARCHIVE_FILE)) {
+			JOptionPane.showMessageDialog(this.view, "Non ci sono esposizioni salvate.", ERROR, JOptionPane.ERROR_MESSAGE);
+		} else {
+			try {
+				if (this.isFilePresent(this.path + SALES_FILE)) {
+					final ObjectInputStream in = new ObjectInputStream(new FileInputStream(this.path + SALES_FILE));
+					salesModel = (SalesManagement) in.readObject();
+					in.close();
+				}
+				if (this.isFilePresent(this.path + BALANCE_FILE)) {
+					final ObjectInputStream in = new ObjectInputStream(new FileInputStream(this.path + BALANCE_FILE));
+					balanceModel = (Balance) in.readObject();
+					in.close();
+				}
+			} catch (IOException | ClassNotFoundException ex) {
+				JOptionPane.showMessageDialog(this.view, LOAD_ERROR, ERROR, JOptionPane.ERROR_MESSAGE);
+			}
+			
+			final BalanceController c = new BalanceController(this.view, v, salesModel, balanceModel, this.path + BALANCE_FILE);
+			c.addView(v);
+			
+			this.view.setVisible(false);
+		}
 	}
 
 	@Override
 	public void classificationCmd() {
+		final ClassificationView v = new ClassificationView();
+		SalesManagement salesModel = new SalesManagement();
+		if (this.isFilePresent(this.path + SALES_FILE)) {
+			try {
+				final ObjectInputStream in = new ObjectInputStream(new FileInputStream(this.path + SALES_FILE));
+				salesModel = (SalesManagement) in.readObject();
+				in.close();
+			} catch (IOException | ClassNotFoundException ex) {
+				JOptionPane.showMessageDialog(this.view, LOAD_ERROR, ERROR, JOptionPane.ERROR_MESSAGE);
+			}	
+			final ClassificationController c = new ClassificationController(this.view, v, salesModel);
+			c.addView(v);
+			
+			this.view.setVisible(false);
+		} else {
+			JOptionPane.showMessageDialog(this.view, "Non sono stati venduti biglietti per le esposizioni.", ERROR, JOptionPane.ERROR_MESSAGE);
+		}
 
 	}
 
 	@Override
 	public void commandQuit() {
 		System.exit(0);
+	}
+	
+	/**
+	 * This method checks if it's necessary to add a new exhibit to the map which stores all the sales data.
+	 * @param newSales
+	 * 				the SalesManagement model
+	 * @param newGallery
+	 * 				the ArtGallery model
+	 * @param newCtrl
+	 * 				the TicketOfficeController
+	 */
+	private void checkNewExPresent(final SalesManagement newSales, final ArtGallery newGallery, final TicketOfficeController newCtrl) {
+		final ListIterator<Exhibit> it = newGallery.getExhibit().listIterator();
+		while (it.hasNext()) {
+			final Exhibit ex = it.next();
+			final Calendar date = Calendar.getInstance();
+			if (date.after(ex.getBeginning()) && date.before(ex.getEnd())) {
+				if (!newSales.isExPresent(ex)) {
+					newSales.addExhibit(ex);
+				}
+			}
+		}
+		newCtrl.save();
 	}
 	
 	private boolean isFilePresent(final String currentPath) {
