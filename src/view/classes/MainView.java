@@ -44,11 +44,11 @@ public class MainView extends JFrame implements IMainView {
 			new ImageIcon(this.getClass().getResource("/archive_artwork_48x48.png")));
 	private final JButton exhibit = new JButton("  ARCHIVIO ESPOSIZIONI", 
 			new ImageIcon(this.getClass().getResource("/archive_exhibit_48x48.png")));
-	private final JButton biglietteria = new JButton("  GESTIONE BIGLIETTERIA", 
+	private final JButton ticketOffice = new JButton("  GESTIONE BIGLIETTERIA", 
 			new ImageIcon(this.getClass().getResource("/ticket_48x48.png")));
-	private final JButton bilancio = new JButton("   BILANCIO GALLERIA     ", 
+	private final JButton balance = new JButton("   BILANCIO GALLERIA     ", 
 			new ImageIcon(this.getClass().getResource("/balance_48x48.png")));
-	private final JButton classifica = new JButton("  CLASSIFICA ESPOSIZIONI", 
+	private final JButton classification = new JButton("  CLASSIFICA ESPOSIZIONI", 
 			new ImageIcon(this.getClass().getResource("/classification_48x48.png")));
 	private final AdderComponentPanel adder = AdderComponentPanel.getAdder();
 	
@@ -61,22 +61,22 @@ public class MainView extends JFrame implements IMainView {
 		super("Art Gallery Management");
 		this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
 
-		Font font = new Font(FONT_NAME, Font.BOLD | Font.ITALIC, SIZE_FONT_TITLE);
-		Font fontbt = new Font(FONT_NAME, Font.BOLD, SIZE_FONT);
+		final Font font = new Font(FONT_NAME, Font.BOLD | Font.ITALIC, SIZE_FONT_TITLE);
+		final Font fontbt = new Font(FONT_NAME, Font.BOLD, SIZE_FONT);
 		this.welcome.setFont(font);
 		this.welcome.setForeground(Color.WHITE);
 		this.artwork.setFont(fontbt);
 		this.exhibit.setFont(fontbt);
-		this.biglietteria.setFont(fontbt);
-		this.bilancio.setFont(fontbt);
-		this.classifica.setFont(fontbt);
+		this.ticketOffice.setFont(fontbt);
+		this.balance.setFont(fontbt);
+		this.classification.setFont(fontbt);
 				
 		final JPanel panel = new BGPanel();
 		
 		final GridBagLayout layout = new GridBagLayout();
 		panel.setLayout(layout);
 		
-		final Dimension dim = this.classifica.getPreferredSize();
+		final Dimension dim = this.classification.getPreferredSize();
 		int row = 0;
 		
 		this.adder.addComponent(panel, this.welcome, 0, row++, 1, 1, 
@@ -90,15 +90,15 @@ public class MainView extends JFrame implements IMainView {
 		this.adder.addComponent(panel, this.exhibit, 0, row++, 1, 1, 
 				GridBagConstraints.NORTH, TOP_EDGE, 0, layout);
 
-		this.biglietteria.setPreferredSize(dim);
-		this.adder.addComponent(panel, this.biglietteria, 0, row++, 1, 1, 
+		this.ticketOffice.setPreferredSize(dim);
+		this.adder.addComponent(panel, this.ticketOffice, 0, row++, 1, 1, 
 				GridBagConstraints.NORTH, TOP_EDGE, 0, layout);
 
-		this.bilancio.setPreferredSize(dim);
-		this.adder.addComponent(panel, this.bilancio, 0, row++, 1, 1, 
+		this.balance.setPreferredSize(dim);
+		this.adder.addComponent(panel, this.balance, 0, row++, 1, 1, 
 				GridBagConstraints.NORTH, TOP_EDGE, 0, layout);
 
-		this.adder.addComponent(panel, this.classifica, 0, row, 1, 1, 
+		this.adder.addComponent(panel, this.classification, 0, row, 1, 1, 
 				GridBagConstraints.NORTH, TOP_EDGE, BOTTOM_EDGE, layout);
 		
 		this.setHandlers();
@@ -129,19 +129,19 @@ public class MainView extends JFrame implements IMainView {
 				ctrl.exhibitCmd();
 			}
 		});
-		this.biglietteria.addActionListener(new ActionListener() {
+		this.ticketOffice.addActionListener(new ActionListener() {
 			public void actionPerformed(final ActionEvent e) {
 				ctrl.ticketOfficeCmd();
 			}
 		});
 		
-		this.bilancio.addActionListener(new ActionListener() {
+		this.balance.addActionListener(new ActionListener() {
 			public void actionPerformed(final ActionEvent e) {
 				ctrl.balanceCmd();
 			}
 		});
 		
-		this.classifica.addActionListener(new ActionListener() {
+		this.classification.addActionListener(new ActionListener() {
 			public void actionPerformed(final ActionEvent e) {
 				ctrl.classificationCmd();
 			}
