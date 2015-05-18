@@ -2,6 +2,7 @@ package view.interfaces;
 
 import java.util.Calendar;
 
+import view.classes.ExhibitView;
 import controller.interfaces.IControllerExhibit;
 
 /**

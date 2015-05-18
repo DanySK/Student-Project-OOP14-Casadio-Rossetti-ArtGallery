@@ -3,6 +3,8 @@ package controller.interfaces;
 import java.util.Calendar;
 
 import view.classes.ExhibitForm;
+import controller.classes.ControllerExhibitForm;
+
 
 /**
  * The interface for the {@link ControllerExhibitForm}.

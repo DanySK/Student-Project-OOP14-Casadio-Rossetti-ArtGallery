@@ -1,5 +1,6 @@
 package view.interfaces;
 
+import view.classes.ArtworkView;
 import controller.interfaces.IControllerArtwork;
 
 /**

@@ -3,6 +3,7 @@ package view.interfaces;
 import java.util.Calendar;
 
 import model.interfaces.IArtGallery;
+import view.classes.ExhibitForm;
 import controller.interfaces.IControllerExhibitForm;
 
 /**

@@ -1,6 +1,7 @@
 package view.interfaces;
 
 import model.interfaces.IArtGallery;
+import view.classes.ArtworkForm;
 import controller.interfaces.IControllerArtworkForm;
 
 /**

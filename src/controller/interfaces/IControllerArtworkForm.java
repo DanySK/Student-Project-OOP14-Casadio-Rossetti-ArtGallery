@@ -1,6 +1,7 @@
 package controller.interfaces;
 
 import view.classes.ArtworkForm;
+import controller.classes.ControllerArtworkForm;
 
 /**
  * The interface for the {@link ControllerArtworkForm}.

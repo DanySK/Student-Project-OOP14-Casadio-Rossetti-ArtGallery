@@ -1,6 +1,7 @@
 package view.interfaces;
 
 import controller.interfaces.IControllerManageArtworkExhibit;
+import view.classes.ManageArtworkExhibit;
 
 /**
  * Interface for the {@link ManageArtworkExhibit}.

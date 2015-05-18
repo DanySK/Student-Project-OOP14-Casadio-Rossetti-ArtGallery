@@ -1,5 +1,7 @@
 package controller.interfaces;
 
+import controller.classes.ControllerManageArtworkExhibit;
+
 /**
  * The interface for the {@link ControllerManageArtworkExhibit}.
  * @author Elisa Casadio

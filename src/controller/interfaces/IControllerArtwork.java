@@ -2,6 +2,8 @@ package controller.interfaces;
 
 import javax.swing.JFrame;
 
+import controller.classes.ControllerArtwork;
+
 /**
  * Interface for {@link ControllerArtwork}.
  * @author Elisa Casadio
