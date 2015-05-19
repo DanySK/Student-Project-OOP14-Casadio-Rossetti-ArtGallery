@@ -9,24 +9,21 @@ import java.util.ListIterator;
 
 import javax.swing.JOptionPane;
 
+import model.classes.ArtGallery;
 import model.classes.Balance;
 import model.classes.Exhibit;
 import model.classes.SalesManagement;
-import model.classes.ArtGallery;
 import model.interfaces.IArtwork;
 import model.interfaces.IExhibit;
-import view.classes.ClassificationView;
-import view.classes.BalanceView;
-import view.classes.TicketOfficeView;
 import view.classes.ArtworkView;
+import view.classes.BalanceView;
+import view.classes.ClassificationView;
 import view.classes.ExhibitView;
 import view.classes.MainView;
+import view.classes.TicketOfficeView;
 import view.interfaces.IArtworkView;
 import view.interfaces.IExhibitView;
 import view.interfaces.IMainView;
-import controller.classes.ClassificationController;
-import controller.classes.BalanceController;
-import controller.classes.TicketOfficeController;
 import controller.interfaces.IMainViewController;
 
 /**
@@ -72,10 +69,10 @@ public class MainViewController implements IMainViewController {
 
 	@Override
 	public void artworkCmd() {
-		final IArtworkView artView = new ArtworkView();
 		ArtGallery model = new ArtGallery();
-		if (this.isFilePresent(this.path + ARCHIVE_FILE)) {
-			try {
+		final ArtworkView artView = new ArtworkView();
+		try {
+			if (this.isFilePresent(this.path + ARCHIVE_FILE)) {
 				final ObjectInputStream in = new ObjectInputStream(
 						new FileInputStream(this.path + ARCHIVE_FILE));
 				model = (ArtGallery) in.readObject();
@@ -87,14 +84,15 @@ public class MainViewController implements IMainViewController {
 						this.addDataTable(artView, art, 1, " D.C.");
 					}
 				}
-			} catch (IOException | ClassNotFoundException e) {
-				JOptionPane.showMessageDialog(this.view, LOAD_ERROR, ERROR,
-						JOptionPane.ERROR_MESSAGE);
 			}
+			new ControllerArtwork(model, artView, this.view, this.path 
+					+ ARCHIVE_FILE);
+			this.view.setVisible(false);
+		} catch (IOException | ClassNotFoundException e) {
+			artView.setVisible(false);
+			JOptionPane.showMessageDialog(this.view, LOAD_ERROR, ERROR,
+					JOptionPane.ERROR_MESSAGE);
 		}
-		new ControllerArtwork(model, artView, this.view, this.path 
-				+ ARCHIVE_FILE);
-		this.view.setVisible(false);
 	}
 
 	@Override
@@ -163,9 +161,7 @@ public class MainViewController implements IMainViewController {
 		final BalanceView v = new BalanceView();
 		SalesManagement salesModel = new SalesManagement();
 		Balance balanceModel = new Balance();
-		if (!this.isFilePresent(this.path + ARCHIVE_FILE)) {
-			JOptionPane.showMessageDialog(this.view, "Non ci sono esposizioni salvate.", ERROR, JOptionPane.ERROR_MESSAGE);
-		} else {
+		if (this.isFilePresent(this.path + ARCHIVE_FILE)) {
 			try {
 				if (this.isFilePresent(this.path + SALES_FILE)) {
 					final ObjectInputStream in = new ObjectInputStream(new FileInputStream(this.path + SALES_FILE));
@@ -185,6 +181,8 @@ public class MainViewController implements IMainViewController {
 			c.addView(v);
 			
 			this.view.setVisible(false);
+		} else {
+			JOptionPane.showMessageDialog(this.view, "Non ci sono esposizioni salvate.", ERROR, JOptionPane.ERROR_MESSAGE);
 		}
 	}
 
@@ -238,11 +236,31 @@ public class MainViewController implements IMainViewController {
 		newCtrl.save();
 	}
 	
+	/**
+	 * This method checks if the file is already present.
+	 * 
+	 * @param currentPath
+	 * 			the current file path.
+	 * 
+	 * @return true if the file exists.
+	 */
 	private boolean isFilePresent(final String currentPath) {
 		final File file = new File(currentPath);
 		return file.exists();
 	}
 	
+	/**
+	 * This method adds the artwork's datas to the related table.
+	 * 
+	 * @param v
+	 * 			the view of the artworks.
+	 * @param art
+	 * 			the model of the artworks.
+	 * @param one
+	 * 			-1 if it is negative, otherwise 1.
+	 * @param dating
+	 * 			"A.C." if the year is negative, otherwise "D.C.".
+	 */
 	private void addDataTable(final IArtworkView v, final IArtwork art,
 			final int one, final String dating) {
 		v.addData(new Object[] {art.getCode(), art.getTitle(), art.getAuthor(),
