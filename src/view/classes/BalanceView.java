@@ -56,7 +56,6 @@ public class BalanceView extends JFrame implements IBalanceView {
 	public BalanceView() {
 		super("Balance View");
 		this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
-		this.setResizable(false);
 		this.setLocationByPlatform(true);
 		final Font font = new Font("Century SchoolBook", Font.BOLD, FONT_SIZE_TOTAL);
 		final Font font1 = new Font("Century SchoolBook", Font.ITALIC, 15);

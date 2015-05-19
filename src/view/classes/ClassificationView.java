@@ -44,7 +44,6 @@ public class ClassificationView extends JFrame implements IClassificationView {
 	public ClassificationView() {
 		super("Classification View");
 		this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
-		this.setResizable(false);
 		this.setSize(GUI_SIZE, GUI_SIZE);
 		this.setLocationByPlatform(true);
 		final Font font = new Font("Century SchoolBook", Font.BOLD, FONT_SIZE);
