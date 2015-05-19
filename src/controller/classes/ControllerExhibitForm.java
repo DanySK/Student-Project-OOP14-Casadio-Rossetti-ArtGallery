@@ -1,6 +1,8 @@
 package controller.classes;
 
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -97,14 +99,16 @@ public class ControllerExhibitForm implements IControllerExhibitForm {
 			} else {
 				if (this.edit == -1) {
 					this.model.addExhibit(new Exhibit(code, title, curator, 
-							dateB, dateE, costEx, costTicket));
+							dateB, dateE, new ArrayList<>(), costEx, costTicket));
 					final int index = this.model.getExhibit().size() - 1;
 					this.viewArtG.addData(code, title, curator, dateB, dateE, 
 							this.model.getExhibit().get(index).getNumPieces(),
 							costEx, costTicket);
 				} else {
+					final List<Long> artworks = this.model.getExhibit()
+							.get(this.edit).getArtworks();
 					this.model.getExhibit().set(this.edit, new Exhibit(code, 
-							title, curator, dateB, dateE, costEx, costTicket));
+							title, curator, dateB, dateE, artworks, costEx, costTicket));
 					this.viewArtG.editData(this.edit, code, title, curator, 
 							dateB, dateE, this.model.getExhibit().get(this.edit)
 							.getNumPieces(), costEx, costTicket);
