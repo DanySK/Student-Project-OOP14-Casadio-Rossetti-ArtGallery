@@ -28,6 +28,7 @@ public class ClassificationController implements IClassificationController {
 	private final SalesManagement salesData;
 	private final Map<IExhibit, Double> map = new HashMap<IExhibit, Double>();
 	private final ClassificationView parentComponent;
+	final double temp = Math.pow(10, 2);
 	
 	/**
 	 * Constructor.
@@ -67,7 +68,7 @@ public class ClassificationController implements IClassificationController {
 		final ListIterator<Entry<IExhibit, Double>> it = this.model.getList().listIterator();
 		while (it.hasNext()) {
 			final Entry<IExhibit, Double> e = it.next();
-			tm.addRow(new Object[] {e.getKey().getTitleExhibit(), e.getValue()});
+			tm.addRow(new Object[] {e.getKey().getTitleExhibit(), Math.round(e.getValue() * temp) / temp});
 		}
 		return tm;
 	}

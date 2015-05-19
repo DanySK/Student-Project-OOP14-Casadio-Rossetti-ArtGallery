@@ -34,6 +34,7 @@ public class TicketOfficeController implements ITicketOfficeController {
 	private final String path;
 	private static final String[] PROPS = new String[] { "Esposizione", "Prezzo base (€)" };
 	private static final String ERROR = "Errore";
+	final double temp = Math.pow(10, 2);
 	
 	/**
 	 * Constructor.
@@ -105,7 +106,6 @@ public class TicketOfficeController implements ITicketOfficeController {
 						if (tickNum == 0) {
 							throw new NumberFormatException();
 						}
-						
 						final double temp = Math.pow(10, 2);						
 						this.parentComponent.updateTotal(Math.round(this.model.purchase(exb, percSelected, tickNum, price) * temp) / temp);
 					}
@@ -126,7 +126,10 @@ public class TicketOfficeController implements ITicketOfficeController {
 		final Iterator<IExhibit> it = this.model.getData().keySet().iterator();
 		while (it.hasNext()) {
 			final IExhibit ex = it.next();
-			tm.addRow(new Object[] {ex.getTitleExhibit(), ex.getCostTicket()});
+			if (ex.getEnd().after(Calendar.getInstance())){
+				tm.addRow(new Object[] {ex.getTitleExhibit(), Math.round(ex.getCostTicket() * temp) / temp});
+			}
+			
 		}
 		return tm;
 	}

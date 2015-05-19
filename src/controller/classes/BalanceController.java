@@ -36,6 +36,7 @@ public class BalanceController implements IBalanceController {
 	private final SalesManagement salesData;
 	private final Map<IExhibit, Double> map = new HashMap<IExhibit, Double>();
 	private final String path;
+	final double temp = Math.pow(10, 2);
 	
 	/**
 	 * Constructor.
@@ -91,14 +92,14 @@ public class BalanceController implements IBalanceController {
 		final Iterator<IExhibit> it = this.map.keySet().iterator();
 		while (it.hasNext()) {
 			final IExhibit ex = it.next();
-			tm.addRow(new Object[] {ex.getTitleExhibit(), this.map.get(ex)});
+			tm.addRow(new Object[] {ex.getTitleExhibit(), Math.round(this.map.get(ex) * temp) / temp});
 		}
 		return tm;
 	}
 	
 	@Override
 	public double computeProfit() {
-		return this.model.profit(this.map);
+		return Math.round(this.model.profit(this.map) * temp) / temp;
 	}
 	
 	@Override
@@ -111,7 +112,7 @@ public class BalanceController implements IBalanceController {
 				if (chosenYear > this.lastYear - 1 || chosenYear < FIRST_YEAR) {
 					throw new NumberFormatException();
 				}
-				this.parentComponent.updateTotal(this.model.getPreviousIncome(chosenYear));
+				this.parentComponent.updateTotal(Math.round(this.model.getPreviousIncome(chosenYear) * temp) / temp);
 			}
 		} catch (NoSuchElementException e) {
 			JOptionPane.showMessageDialog(this.parentComponent, "L'anno " + year + " non è presente", ERROR, JOptionPane.ERROR_MESSAGE);
