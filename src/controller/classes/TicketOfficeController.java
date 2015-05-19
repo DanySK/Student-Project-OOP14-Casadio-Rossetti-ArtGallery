@@ -105,7 +105,9 @@ public class TicketOfficeController implements ITicketOfficeController {
 						if (tickNum == 0) {
 							throw new NumberFormatException();
 						}
-						this.parentComponent.updateTotal(this.model.purchase(exb, percSelected, tickNum, price));
+						
+						final double temp = Math.pow(10, 2);						
+						this.parentComponent.updateTotal(Math.round(this.model.purchase(exb, percSelected, tickNum, price) * temp) / temp);
 					}
 				}				
 			}
