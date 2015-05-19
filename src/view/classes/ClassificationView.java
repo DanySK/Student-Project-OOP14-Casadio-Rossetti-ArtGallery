@@ -62,7 +62,15 @@ public class ClassificationView extends JFrame implements IClassificationView {
 	public void createTab() {
 		this.ctrl.createClassificationStructure();
 		final DefaultTableModel tm = this.ctrl.uploadClassification();
-		this.table = new JTable(tm);
+		this.table = new JTable(tm) {
+			private static final long serialVersionUID = -1443749897958314652L;
+
+			@Override
+			public boolean isCellEditable(final int row, final int column) {
+				return false;
+			}
+		};
+		this.table.getTableHeader().setReorderingAllowed(false);
 		this.buildLayout();
 		this.pack();
 		this.setLocationRelativeTo(null);
