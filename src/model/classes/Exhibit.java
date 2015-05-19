@@ -1,7 +1,6 @@
 package model.classes;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
@@ -39,6 +38,8 @@ public class Exhibit implements IExhibit, Serializable {
 	 * 			the commencement date of this exhibit.
 	 * @param newEnd
 	 * 			the end date of this exhibit.
+	 * @param newArtworks
+	 * 			the array list of the arworks codes.
 	 * @param newCostExhibit
 	 * 			the cost of this exhibit.
 	 * @param newCostTicket
@@ -46,14 +47,14 @@ public class Exhibit implements IExhibit, Serializable {
 	 */
 	public Exhibit(final Long newCode, final String newTitle, 
 			final String newCurator, final Calendar newBeginning, 
-			final Calendar newEnd, final double newCostExhibit, 
-			final double newCostTicket) {
+			final Calendar newEnd, final List<Long> newArtworks, 
+			final double newCostExhibit, final double newCostTicket) {
 		this.codeExhibit = newCode;
 		this.titleExhibit = newTitle;
 		this.curator = newCurator;
 		this.beginning = newBeginning;
 		this.end = newEnd;
-		this.artworks = new ArrayList<>();
+		this.artworks = newArtworks;
 		this.costExhibit = newCostExhibit;
 		this.costTicket = newCostTicket;
 	}
