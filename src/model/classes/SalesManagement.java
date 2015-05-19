@@ -21,7 +21,7 @@ public class SalesManagement implements ISalesManagement, Serializable {
 
 	private static final long serialVersionUID = -5661999114198662822L;
 	private static final int START_YEAR = 1900;
-	private static final int TICKETS = 150;
+	private static final int TICKETS = 500;
 	private Calendar lastPurchaseDate = Calendar.getInstance();
 	private Map<IExhibit, ExhibitData> data;
 	
