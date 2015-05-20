@@ -29,7 +29,8 @@ public class ClassificationView extends JFrame implements IClassificationView {
 
 	private static final long serialVersionUID = -3100286873694107747L;
 	private static final int GUI_SIZE = 800;
-	private static final int FONT_SIZE = 18;
+	private static final int FONT_SIZE_18 = 18;
+	private static final int FONT_SIZE_14 = 14;
 	private static final int EDGE_50 = 50;
 	private static final int EDGE_30 = 30;
 	private final JLabel title = new JLabel("CLASSIFICA DELLE ESPOSIZIONI");
@@ -46,7 +47,7 @@ public class ClassificationView extends JFrame implements IClassificationView {
 		this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
 		this.setSize(GUI_SIZE, GUI_SIZE);
 		this.setLocationByPlatform(true);
-		final Font font = new Font("Century SchoolBook", Font.BOLD, FONT_SIZE);
+		final Font font = new Font("Century SchoolBook", Font.BOLD, FONT_SIZE_18);
 		this.title.setFont(font);
 		this.close.setFont(font);
 		this.close.setIcon(new ImageIcon(this.getClass().getResource("/home_33x33.png")));
@@ -71,6 +72,8 @@ public class ClassificationView extends JFrame implements IClassificationView {
 			}
 		};
 		this.table.getTableHeader().setReorderingAllowed(false);
+		this.table.getTableHeader().setFont(new Font("Century SchoolBook", Font.BOLD, FONT_SIZE_14));
+		this.table.setFont(new Font("Century SchoolBook", Font.PLAIN, FONT_SIZE_14));	
 		this.buildLayout();
 		this.pack();
 		this.setLocationRelativeTo(null);

@@ -35,8 +35,9 @@ public class TicketOfficeView extends JFrame implements ITicketOfficeView {
 	private static final int EDGE_50 = 50;
 	private static final int EDGE_20 = 20;
 	private static final int TOTAL_ROWS = 7;
-	private static final int FONT_SIZE = 15;
-	private static final int FONT_SIZE_TOTAL = 18;
+	private static final int FONT_SIZE_15 = 15;
+	private static final int FONT_SIZE_18 = 18;
+	private static final int FONT_SIZE_14 = 14;
 	private JTable table;
 	private final JComboBox<String> perc = new JComboBox<String>();
 	private final JLabel ticketOffice = new JLabel("BIGLIETTERIA");
@@ -58,8 +59,8 @@ public class TicketOfficeView extends JFrame implements ITicketOfficeView {
 		super("Ticket Office View");
 		this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
 		this.setLocationByPlatform(true);
-		final Font font = new Font("Century SchoolBook", Font.BOLD, FONT_SIZE);
-		final Font fontTotal = new Font("Century SchoolBook", Font.BOLD, FONT_SIZE_TOTAL);
+		final Font font = new Font("Century SchoolBook", Font.BOLD, FONT_SIZE_15);
+		final Font fontTotal = new Font("Century SchoolBook", Font.BOLD, FONT_SIZE_18);
 		this.ticketOffice.setFont(fontTotal);
 		this.discount.setFont(font);
 		this.tickets.setFont(font);
@@ -97,6 +98,8 @@ public class TicketOfficeView extends JFrame implements ITicketOfficeView {
 			}
 		};
 		this.table.getTableHeader().setReorderingAllowed(false);
+		this.table.getTableHeader().setFont(new Font("Century SchoolBook", Font.BOLD, FONT_SIZE_14));
+		this.table.setFont(new Font("Century SchoolBook", Font.PLAIN, FONT_SIZE_14));
 		this.buildLayout();
 		this.pack();
 		this.setLocationRelativeTo(null);

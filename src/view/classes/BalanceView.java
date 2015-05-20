@@ -35,7 +35,8 @@ public class BalanceView extends JFrame implements IBalanceView {
 	private static final int EDGE_5 = 5;
 	private static final int EDGE_30 = 30;
 	private static final int TOTAL_ROWS = 7;
-	private static final int FONT_SIZE_TOTAL = 18;
+	private static final int FONT_SIZE_18 = 18;
+	private static final int FONT_SIZE_14 = 14;
 	private JTable table;
 	private final JLabel title = new JLabel("BILANCIO " + Calendar.getInstance().get(Calendar.YEAR));
 	private final JButton currentTotal = new JButton("Totale " + Calendar.getInstance().get(Calendar.YEAR));
@@ -57,7 +58,7 @@ public class BalanceView extends JFrame implements IBalanceView {
 		super("Balance View");
 		this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
 		this.setLocationByPlatform(true);
-		final Font font = new Font("Century SchoolBook", Font.BOLD, FONT_SIZE_TOTAL);
+		final Font font = new Font("Century SchoolBook", Font.BOLD, FONT_SIZE_18);
 		final Font font1 = new Font("Century SchoolBook", Font.ITALIC, 15);
 		this.title.setFont(font);
 		this.currentTotal.setFont(font);
@@ -90,6 +91,8 @@ public class BalanceView extends JFrame implements IBalanceView {
 			}
 		};
 		this.table.getTableHeader().setReorderingAllowed(false);
+		this.table.getTableHeader().setFont(new Font("Century SchoolBook", Font.BOLD, FONT_SIZE_14));
+		this.table.setFont(new Font("Century SchoolBook", Font.PLAIN, FONT_SIZE_14));
 		this.buildLayout();
 		this.pack();
 		this.setLocationRelativeTo(null);
