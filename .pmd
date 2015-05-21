@@ -108,10 +108,6 @@
             <ruleset>Basic</ruleset>
         </rule>
         <rule>
-            <name>AssignmentInOperand</name>
-            <ruleset>Basic Ecmascript</ruleset>
-        </rule>
-        <rule>
             <name>AvoidTrailingComma</name>
             <ruleset>Basic Ecmascript</ruleset>
         </rule>
@@ -188,14 +184,6 @@
             <ruleset>Basic JSP</ruleset>
         </rule>
         <rule>
-            <name>AvoidReassigningParameters</name>
-            <ruleset>Basic Velocity</ruleset>
-        </rule>
-        <rule>
-            <name>CollapsibleIfStatements</name>
-            <ruleset>Basic Velocity</ruleset>
-        </rule>
-        <rule>
             <name>EmptyForeachStmt</name>
             <ruleset>Basic Velocity</ruleset>
         </rule>
@@ -228,27 +216,11 @@
             <ruleset>Braces</ruleset>
         </rule>
         <rule>
-            <name>ForLoopsMustUseBraces</name>
-            <ruleset>Braces</ruleset>
-        </rule>
-        <rule>
-            <name>IfElseStmtsMustUseBraces</name>
-            <ruleset>Braces</ruleset>
-        </rule>
-        <rule>
             <name>IfElseStmtsMustUseBraces</name>
             <ruleset>Braces</ruleset>
         </rule>
         <rule>
             <name>IfStmtsMustUseBraces</name>
-            <ruleset>Braces</ruleset>
-        </rule>
-        <rule>
-            <name>IfStmtsMustUseBraces</name>
-            <ruleset>Braces</ruleset>
-        </rule>
-        <rule>
-            <name>WhileLoopsMustUseBraces</name>
             <ruleset>Braces</ruleset>
         </rule>
         <rule>
@@ -262,10 +234,6 @@
         <rule>
             <name>CloneThrowsCloneNotSupportedException</name>
             <ruleset>Clone Implementation</ruleset>
-        </rule>
-        <rule>
-            <name>CyclomaticComplexity</name>
-            <ruleset>Code Size</ruleset>
         </rule>
         <rule>
             <name>CyclomaticComplexity</name>
@@ -593,10 +561,6 @@
         </rule>
         <rule>
             <name>EmptyFinallyBlock</name>
-            <ruleset>Empty Code</ruleset>
-        </rule>
-        <rule>
-            <name>EmptyIfStmt</name>
             <ruleset>Empty Code</ruleset>
         </rule>
         <rule>
