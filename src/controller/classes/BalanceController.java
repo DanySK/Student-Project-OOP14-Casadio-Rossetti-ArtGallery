@@ -27,7 +27,7 @@ import controller.interfaces.IBalanceController;
 public class BalanceController implements IBalanceController {
 
 	private static final String ERROR = "Errore";
-	private static final int FIRST_YEAR = 2000;
+	private static final int FIRST_YEAR = 2002;
 	private final int lastYear;
 	private static final String[] PROPS = new String[] { "Esposizione", "Incasso (€)" };
 	private final MainView mainView;
@@ -36,7 +36,7 @@ public class BalanceController implements IBalanceController {
 	private final SalesManagement salesData;
 	private final Map<IExhibit, Double> map = new HashMap<IExhibit, Double>();
 	private final String path;
-	final double temp = Math.pow(10, 2);
+	private final double temp = Math.pow(10, 2);
 	
 	/**
 	 * Constructor.
