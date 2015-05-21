@@ -49,7 +49,7 @@ public class Classification implements IClassification {
 	}
 	
 	/**
-	 * This class implements a new Comparator for the Entry<IExhibit, Double>
+	 * This class implements a new Comparator for the Entry from IExhibit to Double.
 	 * 
 	 * @author Sofia Rosetti
 	 *

@@ -14,7 +14,7 @@ public interface IClassification {
 	
 	/**
 	 * Given a map from an exhibit to its income, this method creates a list 
-	 * of Entry<IExhibit, Double>, sorted using a new Comparator. 
+	 * of Entry from IExhibit to Double, sorted using a new Comparator. 
 	 * 
 	 * @param incomes
 	 * 				the map containing exhibits and incomes
@@ -22,9 +22,9 @@ public interface IClassification {
 	void sortMap(Map<IExhibit, Double> incomes);
 	
 	/**
-	 * This method returns the list of Entry<IExhibit, Double>.
+	 * This method returns the list of Entry from IExhibit to Double.
 	 * 
-	 * @return the Entry<IExhibit, Double> list
+	 * @return the Entry list
 	 */
 	List<Entry<IExhibit, Double>> getList();
 	
