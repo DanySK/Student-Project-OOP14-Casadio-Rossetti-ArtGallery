@@ -37,11 +37,12 @@ public class BalanceView extends JFrame implements IBalanceView {
 	private static final int TOTAL_ROWS = 7;
 	private static final int FONT_SIZE_18 = 18;
 	private static final int FONT_SIZE_14 = 14;
+	private static final String FONT_NAME = "Century SchoolBook";
 	private JTable table;
 	private final JLabel title = new JLabel("BILANCIO " + Calendar.getInstance().get(Calendar.YEAR));
 	private final JButton currentTotal = new JButton("Totale " + Calendar.getInstance().get(Calendar.YEAR));
 	private final JLabel currentTotalImport = new JLabel("€ ");
-	private final JLabel text1 = new JLabel("      Inserisci un anno compreso tra il 2000 e il " 
+	private final JLabel text1 = new JLabel("      Inserisci un anno compreso tra il 2002 e il " 
 									+ (Calendar.getInstance().get(Calendar.YEAR) - 1) + "     ");
 	private final JLabel text2 = new JLabel("    e premi 'Cerca' per visualizzarne il saldo. ");
 	private final JTextField year = new JTextField();
@@ -58,8 +59,8 @@ public class BalanceView extends JFrame implements IBalanceView {
 		super("Balance View");
 		this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
 		this.setLocationByPlatform(true);
-		final Font font = new Font("Century SchoolBook", Font.BOLD, FONT_SIZE_18);
-		final Font font1 = new Font("Century SchoolBook", Font.ITALIC, 15);
+		final Font font = new Font(FONT_NAME, Font.BOLD, FONT_SIZE_18);
+		final Font font1 = new Font(FONT_NAME, Font.ITALIC, 15);
 		this.title.setFont(font);
 		this.currentTotal.setFont(font);
 		this.currentTotalImport.setFont(font);
@@ -91,8 +92,8 @@ public class BalanceView extends JFrame implements IBalanceView {
 			}
 		};
 		this.table.getTableHeader().setReorderingAllowed(false);
-		this.table.getTableHeader().setFont(new Font("Century SchoolBook", Font.BOLD, FONT_SIZE_14));
-		this.table.setFont(new Font("Century SchoolBook", Font.PLAIN, FONT_SIZE_14));
+		this.table.getTableHeader().setFont(new Font(FONT_NAME, Font.BOLD, FONT_SIZE_14));
+		this.table.setFont(new Font(FONT_NAME, Font.PLAIN, FONT_SIZE_14));
 		this.buildLayout();
 		this.pack();
 		this.setLocationRelativeTo(null);
