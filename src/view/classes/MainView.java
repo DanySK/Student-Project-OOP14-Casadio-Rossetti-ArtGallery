@@ -1,6 +1,5 @@
 package view.classes;
 
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
@@ -33,13 +32,13 @@ public class MainView extends JFrame implements IMainView {
 	private static final long serialVersionUID = 6709954522924991930L;
 	private static final int TOP_EDGE = 30;
 	private static final int BOTTOM_EDGE = 20;
-	private static final int SIZE_FONT_TITLE = 42;
 	private static final int SIZE_FONT = 15;
 	private static final String FONT_NAME = "Century SchoolBook";
 	private static final String QUIT = "USCITA";
 	private static final String QUIT_MESSAGE = "Sei sicuro di voler uscire?";
 	
-	private final JLabel welcome = new JLabel("    Art Gallery Management    ");
+	private final JLabel welcome = new JLabel(
+			new ImageIcon(this.getClass().getResource("/logo.png")));
 	private final JButton artwork = new JButton("  ARCHIVIO OPERE D'ARTE", 
 			new ImageIcon(this.getClass().getResource("/archive_artwork_48x48.png")));
 	private final JButton exhibit = new JButton("  ARCHIVIO ESPOSIZIONI", 
@@ -61,15 +60,12 @@ public class MainView extends JFrame implements IMainView {
 		super("Art Gallery Management");
 		this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
 
-		final Font font = new Font(FONT_NAME, Font.BOLD | Font.ITALIC, SIZE_FONT_TITLE);
-		final Font fontbt = new Font(FONT_NAME, Font.BOLD, SIZE_FONT);
-		this.welcome.setFont(font);
-		this.welcome.setForeground(Color.WHITE);
-		this.artwork.setFont(fontbt);
-		this.exhibit.setFont(fontbt);
-		this.ticketOffice.setFont(fontbt);
-		this.balance.setFont(fontbt);
-		this.classification.setFont(fontbt);
+		final Font font = new Font(FONT_NAME, Font.BOLD, SIZE_FONT);
+		this.artwork.setFont(font);
+		this.exhibit.setFont(font);
+		this.ticketOffice.setFont(font);
+		this.balance.setFont(font);
+		this.classification.setFont(font);
 				
 		final JPanel panel = new BGPanel();
 		
