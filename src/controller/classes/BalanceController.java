@@ -51,7 +51,8 @@ public class BalanceController implements IBalanceController {
 	 * @param newPath
 	 * 			the file path
 	 */
-	public BalanceController(final MainView newMainView, final BalanceView v, final SalesManagement newSales, final Balance newBalance, final String newPath) {
+	public BalanceController(final MainView newMainView, final BalanceView v, 
+			final SalesManagement newSales, final Balance newBalance, final String newPath) {
 		this.mainView = newMainView;
 		this.model = newBalance;
 		this.parentComponent = v;
@@ -67,7 +68,8 @@ public class BalanceController implements IBalanceController {
 			out.writeObject(this.model);
 			out.close();
 		} catch (IOException ex) {
-			JOptionPane.showMessageDialog(this.parentComponent, "Errore nel salvataggio", ERROR, JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(this.parentComponent, "Errore nel salvataggio", 
+					ERROR, JOptionPane.ERROR_MESSAGE);
 		}	
 	}
 	
@@ -115,9 +117,11 @@ public class BalanceController implements IBalanceController {
 				this.parentComponent.updateTotal(Math.round(this.model.getPreviousIncome(chosenYear) * temp) / temp);
 			}
 		} catch (NoSuchElementException e) {
-			JOptionPane.showMessageDialog(this.parentComponent, "L'anno " + year + " non è presente", ERROR, JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(this.parentComponent, "L'anno " + year + " non è presente", 
+					ERROR, JOptionPane.ERROR_MESSAGE);
 		} catch (NumberFormatException e) {
-			JOptionPane.showMessageDialog(this.parentComponent, "Inserisci un anno tra " + FIRST_YEAR + " e " + (this.lastYear - 1), ERROR, JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(this.parentComponent, "Inserisci un anno tra " + FIRST_YEAR 
+					+ " e " + (this.lastYear - 1), ERROR, JOptionPane.ERROR_MESSAGE);
 		}
 		
 	}

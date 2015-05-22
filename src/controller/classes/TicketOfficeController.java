@@ -66,7 +66,8 @@ public class TicketOfficeController implements ITicketOfficeController {
 			out.writeObject(this.model);
 			out.close();
 		} catch (IOException ex) {
-			JOptionPane.showMessageDialog(this.parentComponent, "Errore nel salvataggio", ERROR, JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(this.parentComponent, "Errore nel salvataggio", 
+					ERROR, JOptionPane.ERROR_MESSAGE);
 		}	
 	}
 	
@@ -84,7 +85,8 @@ public class TicketOfficeController implements ITicketOfficeController {
 	}
 	
 	@Override
-	public void commandConfirm(final String ex, final String percentage, final String number, final double price) {
+	public void commandConfirm(final String ex, final String percentage, final String number, 
+			final double price) {
 		try {
 			double percSelected = 0;
 			for (final Discounts d: Discounts.values()) {
@@ -112,11 +114,14 @@ public class TicketOfficeController implements ITicketOfficeController {
 				}				
 			}
 		} catch (NumberFormatException e) {
-			JOptionPane.showMessageDialog(this.parentComponent, "Inserisci un numero di biglietti maggiore di 0", ERROR, JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(this.parentComponent, "Inserisci un numero di biglietti maggiore di 0", 
+					ERROR, JOptionPane.ERROR_MESSAGE);
 		} catch (IllegalArgumentException e) {
-			JOptionPane.showMessageDialog(this.parentComponent, "Non ci sono abbastanza biglietti disponibili" , ERROR, JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(this.parentComponent, "Non ci sono abbastanza biglietti disponibili" , 
+					ERROR, JOptionPane.ERROR_MESSAGE);
 		} catch (NoSuchElementException e) {
-			JOptionPane.showMessageDialog(this.parentComponent, "Impossibile trovare l'esposizione" , ERROR, JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(this.parentComponent, "Impossibile trovare l'esposizione" , 
+					ERROR, JOptionPane.ERROR_MESSAGE);
 		}
 	}
 	
@@ -136,11 +141,13 @@ public class TicketOfficeController implements ITicketOfficeController {
 	
 	/**
 	 * This method checks if the date of the last purchase is different from the current date.
-	 * If so, it calls the model method "resetTickets" in order to reset the number of available tickets for the current day.
+	 * If so, it calls the model method "resetTickets" in order to reset the number of 
+	 * available tickets for the current day.
 	 */
 	private void checkDate() {
 		final Calendar date = Calendar.getInstance();
-		if (date.after(this.model.getLastDate()) && date.get(Calendar.DAY_OF_MONTH) != this.model.getLastDate().get(Calendar.DAY_OF_MONTH)) {
+		if (date.after(this.model.getLastDate()) && date.get(Calendar.DAY_OF_MONTH) 
+				!= this.model.getLastDate().get(Calendar.DAY_OF_MONTH)) {
 				this.model.resetTickets();
 		}
 	}

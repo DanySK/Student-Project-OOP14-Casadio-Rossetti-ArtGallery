@@ -39,7 +39,8 @@ public class ClassificationController implements IClassificationController {
 	 * @param newSales
 	 * 			the SalesModel
 	 */
-	public ClassificationController(final MainView newMainView, final ClassificationView v, final SalesManagement newSales) {
+	public ClassificationController(final MainView newMainView, final ClassificationView v, 
+			final SalesManagement newSales) {
 		this.mainView = newMainView;
 		this.model = new Classification();
 		this.parentComponent = v;
