@@ -18,7 +18,8 @@ public interface IBalanceView {
 	void attachController(BalanceController controller);
 
 	/**
-	 * This method creates the JTable which will contain the exhibits whose tickets are available to be bought.
+	 * This method creates the JTable which will contain the exhibits 
+	 * whose tickets are available to be bought.
 	 */
 	void createTab();
 	
