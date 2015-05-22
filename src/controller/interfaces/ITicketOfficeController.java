@@ -39,10 +39,12 @@ public interface ITicketOfficeController {
 	 * @param price
 	 * 			the original price of the ticket 
 	 */
-	void commandConfirm(final String ex, final String percentage, final String number, final double price);
+	void commandConfirm(final String ex, final String percentage, 
+			final String number, final double price);
 	
 	/**
-	 * This method uploads from the ArtGallery all the open exhibits and puts them into a DefaultTableModel.
+	 * This method uploads from the ArtGallery all the open exhibits 
+	 * and puts them into a DefaultTableModel.
 	 * @return the DefaultTableModel containing the exhibits and the prices
 	 */
 	DefaultTableModel uploadExhibits();
