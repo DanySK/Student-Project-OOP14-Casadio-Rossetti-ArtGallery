@@ -114,16 +114,26 @@ public class TicketOfficeView extends JFrame implements ITicketOfficeView {
 		panel.setLayout(layout);
 		
 		int row = 0;
-		this.adder.addComponent(panel, this.ticketOffice, 0, row++, 3, 1, GridBagConstraints.NORTH, 10, 0, layout);
-		this.adder.addComponent(panel, new JScrollPane(this.table), 0, row++, 1, TOTAL_ROWS, GridBagConstraints.NORTH, EDGE_20, 0, layout);
-		this.adder.addComponent(panel, this.discount, 1, row, 1, 2, GridBagConstraints.NORTH, EDGE_50, 0, layout);
-		this.adder.addComponent(panel, this.perc, 2, row++, 1, 2, GridBagConstraints.NORTH, EDGE_50, 0, layout);
-		this.adder.addComponent(panel, this.tickets, 1, ++row, 1, 1, GridBagConstraints.NORTH, 10, 0, layout);
-		this.adder.addComponent(panel, this.textFieldTickets, 2, row++, 1, 1, GridBagConstraints.NORTH, 10, 0, layout);
-		this.adder.addComponent(panel, this.total, 1, row, 1, 1, GridBagConstraints.SOUTH, EDGE_50, 0, layout);
-		this.adder.addComponent(panel, this.totalImport, 2, row++, 1, 1, GridBagConstraints.SOUTH, EDGE_50, 0, layout);
-		this.adder.addComponent(panel, this.confirm, 1, row++, 2, 1, GridBagConstraints.SOUTH, EDGE_50, 0, layout);
-		this.adder.addComponent(panel, this.close, 1, row, 2, 1, GridBagConstraints.SOUTH, EDGE_50, 100, layout);
+		this.adder.addComponent(panel, this.ticketOffice, 0, row++, 3, 1, 
+				GridBagConstraints.NORTH, 10, 0, layout);
+		this.adder.addComponent(panel, new JScrollPane(this.table), 0, row++, 1, TOTAL_ROWS, 
+				GridBagConstraints.NORTH, EDGE_20, 0, layout);
+		this.adder.addComponent(panel, this.discount, 1, row, 1, 2, 
+				GridBagConstraints.NORTH, EDGE_50, 0, layout);
+		this.adder.addComponent(panel, this.perc, 2, row++, 1, 2, 
+				GridBagConstraints.NORTH, EDGE_50, 0, layout);
+		this.adder.addComponent(panel, this.tickets, 1, ++row, 1, 1, 
+				GridBagConstraints.NORTH, 10, 0, layout);
+		this.adder.addComponent(panel, this.textFieldTickets, 2, row++, 1, 1, 
+				GridBagConstraints.NORTH, 10, 0, layout);
+		this.adder.addComponent(panel, this.total, 1, row, 1, 1, 
+				GridBagConstraints.SOUTH, EDGE_50, 0, layout);
+		this.adder.addComponent(panel, this.totalImport, 2, row++, 1, 1, 
+				GridBagConstraints.SOUTH, EDGE_50, 0, layout);
+		this.adder.addComponent(panel, this.confirm, 1, row++, 2, 1, 
+				GridBagConstraints.SOUTH, EDGE_50, 0, layout);
+		this.adder.addComponent(panel, this.close, 1, row, 2, 1, 
+				GridBagConstraints.SOUTH, EDGE_50, 100, layout);
 		
 		this.getContentPane().add(panel);
 		this.setVisible(true);
@@ -133,7 +143,8 @@ public class TicketOfficeView extends JFrame implements ITicketOfficeView {
 	 * This method shows a new ErrorDialog which asks to select a table row.
 	 */
 	private void showErrorDialog() {
-		JOptionPane.showMessageDialog(this, "Seleziona una riga nella tabella", "Errore", JOptionPane.ERROR_MESSAGE);
+		JOptionPane.showMessageDialog(this, "Seleziona una riga nella tabella", 
+				"Errore", JOptionPane.ERROR_MESSAGE);
 	}
 	
 	@Override
@@ -148,7 +159,9 @@ public class TicketOfficeView extends JFrame implements ITicketOfficeView {
 		this.confirm.addActionListener(new ActionListener() {
 			public void actionPerformed(final ActionEvent e) {
 				try {
-					ctrl.commandConfirm((String) table.getModel().getValueAt(table.getSelectedRow(), 0), perc.getSelectedItem().toString(), textFieldTickets.getText(), (double) table.getModel().getValueAt(table.getSelectedRow(), 1));
+					ctrl.commandConfirm((String) table.getModel().getValueAt(table.getSelectedRow(), 0), 
+							perc.getSelectedItem().toString(), textFieldTickets.getText(), 
+							(double) table.getModel().getValueAt(table.getSelectedRow(), 1));
 				} catch (ArrayIndexOutOfBoundsException exc) {
 					showErrorDialog();					
 				}

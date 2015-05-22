@@ -39,8 +39,10 @@ public class BalanceView extends JFrame implements IBalanceView {
 	private static final int FONT_SIZE_14 = 14;
 	private static final String FONT_NAME = "Century SchoolBook";
 	private JTable table;
-	private final JLabel title = new JLabel("BILANCIO " + Calendar.getInstance().get(Calendar.YEAR));
-	private final JButton currentTotal = new JButton("Totale " + Calendar.getInstance().get(Calendar.YEAR));
+	private final JLabel title = new JLabel("BILANCIO " 
+	+ Calendar.getInstance().get(Calendar.YEAR));
+	private final JButton currentTotal = new JButton("Totale " 
+	+ Calendar.getInstance().get(Calendar.YEAR));
 	private final JLabel currentTotalImport = new JLabel("€ ");
 	private final JLabel text1 = new JLabel("      Inserisci un anno compreso tra il 2002 e il " 
 									+ (Calendar.getInstance().get(Calendar.YEAR) - 1) + "     ");
@@ -109,16 +111,26 @@ public class BalanceView extends JFrame implements IBalanceView {
 		panel.setLayout(layout);
 		
 		int row = 0;
-		this.adder.addComponent(panel, this.title, 0, row++, 4, 1, GridBagConstraints.NORTH, 10, 0, layout);
-		this.adder.addComponent(panel, new JScrollPane(this.table), 0, row, 1, TOTAL_ROWS, GridBagConstraints.NORTH, 10, 0, layout);
-		this.adder.addComponent(panel, this.currentTotal, 1, row, 1, 2, GridBagConstraints.NORTH, EDGE_50, 0, layout);
-		this.adder.addComponent(panel, this.currentTotalImport, 2, row++, 1, 2, GridBagConstraints.NORTH, EDGE_50, 0, layout);
-		this.adder.addComponent(panel, this.text1, 1, ++row, 2, 1, GridBagConstraints.NORTH, EDGE_50, 0, layout);
-		this.adder.addComponent(panel, this.text2, 1, ++row, 2, 1, GridBagConstraints.NORTH, EDGE_5, 0, layout);
-		this.adder.addComponent(panel, this.year, 1, ++row, 1, 1, GridBagConstraints.NORTH, EDGE_50, 0, layout);
-		this.adder.addComponent(panel, this.search, 2, row++, 1, 1, GridBagConstraints.NORTH, EDGE_50, 0, layout);
-		this.adder.addComponent(panel, this.specificImport, 1, row++, 3, 1, GridBagConstraints.NORTH, EDGE_30, 0, layout);
-		this.adder.addComponent(panel, this.close, 1, row, 3, 1, GridBagConstraints.SOUTH, EDGE_50, EDGE_50, layout);
+		this.adder.addComponent(panel, this.title, 0, row++, 4, 1, 
+				GridBagConstraints.NORTH, 10, 0, layout);
+		this.adder.addComponent(panel, new JScrollPane(this.table), 0, row, 1, TOTAL_ROWS, 
+				GridBagConstraints.NORTH, 10, 0, layout);
+		this.adder.addComponent(panel, this.currentTotal, 1, row, 1, 2, 
+				GridBagConstraints.NORTH, EDGE_50, 0, layout);
+		this.adder.addComponent(panel, this.currentTotalImport, 2, row++, 1, 2, 
+				GridBagConstraints.NORTH, EDGE_50, 0, layout);
+		this.adder.addComponent(panel, this.text1, 1, ++row, 2, 1, 
+				GridBagConstraints.NORTH, EDGE_50, 0, layout);
+		this.adder.addComponent(panel, this.text2, 1, ++row, 2, 1, 
+				GridBagConstraints.NORTH, EDGE_5, 0, layout);
+		this.adder.addComponent(panel, this.year, 1, ++row, 1, 1, 
+				GridBagConstraints.NORTH, EDGE_50, 0, layout);
+		this.adder.addComponent(panel, this.search, 2, row++, 1, 1, 
+				GridBagConstraints.NORTH, EDGE_50, 0, layout);
+		this.adder.addComponent(panel, this.specificImport, 1, row++, 3, 1, 
+				GridBagConstraints.NORTH, EDGE_30, 0, layout);
+		this.adder.addComponent(panel, this.close, 1, row, 3, 1, 
+				GridBagConstraints.SOUTH, EDGE_50, EDGE_50, layout);
 		
 		this.getContentPane().add(panel);
 		this.setVisible(true);

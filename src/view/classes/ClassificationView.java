@@ -88,9 +88,12 @@ public class ClassificationView extends JFrame implements IClassificationView {
 		final JPanel panel = new JPanel();
 		panel.setLayout(layout);
 		
-		this.adder.addComponent(panel, this.title, 0, 0, 1, 1, GridBagConstraints.NORTH, 10, 0, layout);
-		this.adder.addComponent(panel, new JScrollPane(this.table), 0, 1, 1, 1, GridBagConstraints.NORTH, EDGE_30, 0, layout);
-		this.adder.addComponent(panel, this.close, 0, 2, 1, 1, GridBagConstraints.SOUTH, EDGE_50, EDGE_50, layout);
+		this.adder.addComponent(panel, this.title, 0, 0, 1, 1, 
+				GridBagConstraints.NORTH, 10, 0, layout);
+		this.adder.addComponent(panel, new JScrollPane(this.table), 0, 1, 1, 1, 
+				GridBagConstraints.NORTH, EDGE_30, 0, layout);
+		this.adder.addComponent(panel, this.close, 0, 2, 1, 1, 
+				GridBagConstraints.SOUTH, EDGE_50, EDGE_50, layout);
 		
 		this.getContentPane().add(panel);
 		this.setVisible(true);
