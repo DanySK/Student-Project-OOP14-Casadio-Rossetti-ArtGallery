@@ -55,5 +55,11 @@ public class Balance implements IBalance, Serializable {
 			throw new NoSuchElementException();
 		}
 	}
+	
+	@Override
+	public String toString() {
+		return "Incomes data: " + this.incomes.toString();
+		
+	}
 
 }

@@ -48,6 +48,12 @@ public class Classification implements IClassification {
 		return this.list;
 	}
 	
+	@Override
+	public String toString() {
+		return "Classification data: " + this.map.toString();
+		
+	}
+	
 	/**
 	 * This class implements a new Comparator for the Entry from IExhibit to Double.
 	 * 

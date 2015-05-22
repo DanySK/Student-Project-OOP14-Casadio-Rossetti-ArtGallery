@@ -67,7 +67,8 @@ public class SalesManagement implements ISalesManagement, Serializable {
 	}
 	
 	@Override
-	public double purchase(final IExhibit ex, final double percentage, final int number, final double price) {
+	public double purchase(final IExhibit ex, final double percentage, final int number, 
+			final double price) {
 		Purchase p;
 		if (percentage == 0) {
 			p = new Purchase(ex, number, new Ticket(ex.getTitleExhibit(), price));
