@@ -4,7 +4,8 @@ import java.util.Map;
 import java.util.NoSuchElementException;
 
 /**
- * This interface models the summary of the incomes related to the expositions made until the current date.
+ * This interface models the summary of the incomes related 
+ * to the expositions made until the current date.
  * 
  * @author Sofia Rosetti
  *

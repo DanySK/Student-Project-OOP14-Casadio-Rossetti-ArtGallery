@@ -16,7 +16,8 @@ import model.classes.ExhibitData;
 public interface ISalesManagement {
 	
 	/**
-	 * This method adds a new exhibit to the map which stores the exhibits data related to the management of the ticket office.
+	 * This method adds a new exhibit to the map which stores the exhibits data 
+	 * related to the management of the ticket office.
 	 * 
 	 * @param ex
 	 * 			the new exhibit
@@ -24,7 +25,8 @@ public interface ISalesManagement {
 	void addExhibit(IExhibit ex);
 	
 	/**
-	 * This method resets the number of available tickets for an exhibit, bringing it back to the default number.
+	 * This method resets the number of available tickets for an exhibit, 
+	 * bringing it back to the default number.
 	 */
 	void resetTickets();
 	
@@ -45,7 +47,8 @@ public interface ISalesManagement {
 	double getIncome(Exhibit ex);
 	
 	/**
-	 * This method sets the map containing the expositions and the related available tickets to the given one.
+	 * This method sets the map containing the expositions 
+	 * and the related available tickets to the given one.
 	 * 
 	 * @param m
 	 * 			the new map 
