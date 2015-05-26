@@ -28,7 +28,7 @@ public class ClassificationController implements IClassificationController {
 	private final SalesManagement salesData;
 	private final Map<IExhibit, Double> map = new HashMap<IExhibit, Double>();
 	private final ClassificationView parentComponent;
-	final double temp = Math.pow(10, 2);
+	private final double temp = Math.pow(10, 2);
 	
 	/**
 	 * Constructor.

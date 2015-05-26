@@ -34,7 +34,7 @@ public class TicketOfficeController implements ITicketOfficeController {
 	private final String path;
 	private static final String[] PROPS = new String[] { "Esposizione", "Prezzo base (€)" };
 	private static final String ERROR = "Errore";
-	final double temp = Math.pow(10, 2);
+	private final double temp = Math.pow(10, 2);
 	
 	/**
 	 * Constructor.
