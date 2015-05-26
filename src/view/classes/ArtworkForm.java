@@ -276,7 +276,7 @@ public class ArtworkForm extends JDialog implements IArtworkForm {
 	 */
 	private void setTechniqueForm(final JComboBox<String> list) {
 		list.setEditable(true);
-		list.setVisible(false);
+		list.setVisible(true);
 	}
 	
 	/**
