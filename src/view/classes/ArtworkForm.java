@@ -477,10 +477,11 @@ public class ArtworkForm extends JDialog implements IArtworkForm {
 			final boolean isPaint, final boolean isSculp) {
 		this.paintingField.setSelected(isPaint);
 		this.sculptureField.setSelected(isSculp);
-		this.materialsSculpture.setSelectedItem(model.getArtwork().get(index).getTechnique());
 		if (isPaint) {
+			this.techniquesPainting.setSelectedItem(model.getArtwork().get(index).getTechnique());
 			this.materialsSculpture.setSelectedIndex(0);
 		} else {
+			this.materialsSculpture.setSelectedItem(model.getArtwork().get(index).getTechnique());
 			this.techniquesPainting.setSelectedIndex(0);
 		}
 		this.techniquesPainting.setVisible(isPaint);
